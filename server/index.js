@@ -6,6 +6,7 @@ const dev = process.env.NODE_DEV !== 'production';
 const nextApp = next({ dev });
 const handle = nextApp.getRequestHandler();
 const mongoose = require('mongoose');
+const cors = require('cors');
 
 const db = mongoose
   .connect(config.mongoUrl)
@@ -17,17 +18,19 @@ const db = mongoose
   });
 
 nextApp.prepare().then(() => {
+  // express code here
   const app = express();
   app.use(cors());
   app.use(bodyParser.json());
-  app.use(morgan(':method :url :res :status :response-time[4]'));
+  app.use(bodyParser.urlencoded({ extended: true }));
 
-  morgan.token('res', function(res) {
-    return JSON.stringify(res.body);
+  app.get('*', (req, res) => {
+    return handle(req, res);
   });
 
-  app.listen(config.port, () => {
-    console.log(`Server running on port ${config.port}`);
+  app.listen(config.port, err => {
+    if (err) throw err;
+    console.log(`ready at http://localhost:${config.port}`);
   });
 
   app.on('close', () => {
