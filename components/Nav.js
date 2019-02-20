@@ -12,6 +12,9 @@ const Nav = () => (
     <Link href="/contact">
       <a>Contact</a>
     </Link>
+    <Link href="/photos">
+      <a>Photos</a>
+    </Link>
   </NavStyles>
 );
 

@@ -13,7 +13,7 @@ const NavStyles = styled.ul`
     align-items: center;
     position: relative;
     text-transform: uppercase;
-    font-weight: 800;
+    font-weight: 400;
     font-size: 1em;
     background: none;
     border: 0;
@@ -23,7 +23,7 @@ const NavStyles = styled.ul`
       font-size: 10px;
       padding: 0 10px;
     }
-    /* &:before {
+    &:before {
       content: '';
       width: 2px;
       background: ${props => props.theme.lightgrey};
@@ -33,7 +33,7 @@ const NavStyles = styled.ul`
       transform: skew(-20deg);
       top: 0;
       bottom: 0;
-    } */
+    }
     &:after {
       height: 2px;
       background: red;

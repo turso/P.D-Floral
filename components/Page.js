@@ -13,10 +13,10 @@ const theme = {
   bs: '0 12px 24px 0 rgba(0, 0, 0, 0.09)'
 };
 
-const StyledPage = styled.div`
-  background: white;
-  color: ${props => props.theme.black};
-`;
+// const StyledPage = styled.div`
+//   background: white;
+//   color: ${props => props.theme.black};
+// `;
 
 const Inner = styled.div`
   max-width: ${props => props.theme.maxWidth};
@@ -28,12 +28,13 @@ const GlobalStyle = createGlobalStyle`
   @font-face {
     font-family: 'radnika_next';
     src: url('/static/radnikanext-medium-webfont.woff2') format('woff2');
+    /* src: url('static/Raleway-Black-Original.otf') format('otf'); */
     font-weight: normal;
     font-style: normal;
   }
   html {
     box-sizing: border-box;
-    font-size: 40px;
+    font-size: 15px;
   }
   *, *:before, *:after {
     box-sizing: inherit;
@@ -55,14 +56,14 @@ export default class Page extends Component {
   render() {
     return (
       <ThemeProvider theme={theme}>
-        <StyledPage>
+        <>
           <Meta />
           <Header />
           <Inner>
             <GlobalStyle />
             {this.props.children}
           </Inner>
-        </StyledPage>
+        </>
       </ThemeProvider>
     );
   }
