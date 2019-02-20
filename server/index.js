@@ -45,6 +45,18 @@ nextApp
     app.use(passport.initialize());
     app.use(passport.session());
 
+    app.get('/login', passport.authenticate('instagram'), function(req, res) {});
+
+    app.get('/callback', passport.authenticate('instagram', { failureRedirect: '/' }), function(
+      req,
+      res
+    ) {
+      console.log('kiinnostaa callback sisältö');
+      console.log('code', req.query.code);
+      // Successful authentication, redirect home.
+      res.redirect('/photos');
+    });
+
     // Default catch-all handler to allow Next.js to handle all other routes
     app.all('*', (req, res) => {
       let nextRequestHandler = nextApp.getRequestHandler();
