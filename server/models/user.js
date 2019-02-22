@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-let findOrCreate = require('mongoose-findorcreate');
+// let findOrCreate = require('mongoose-findorcreate');
 
 const userSchema = new mongoose.Schema({
   instagramId: String,
@@ -12,10 +12,11 @@ const userSchema = new mongoose.Schema({
   },
   username: String,
   emails: [{ value: String, type: String }],
-  photos: [{ value: String }]
+  photos: [{ value: String }],
+  accessToken: String
 });
 
-userSchema.plugin(findOrCreate);
+// userSchema.plugin(findOrCreate);
 
 const User = mongoose.model('user', userSchema);
 

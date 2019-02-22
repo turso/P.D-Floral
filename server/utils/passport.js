@@ -1,10 +1,8 @@
 const passport = require('passport');
-const InstagramStrategy = require('passport-instagram');
-const mongoose = require('mongoose');
+const InstagramStrategy = require('passport-instagram').Strategy;
 const config = require('./config');
 
-// USER MODEL HERE //
-const User = mongoose.model('user');
+const User = require('../models/user');
 
 passport.serializeUser((user, done) => {
   done(null, user.id);
@@ -25,15 +23,17 @@ passport.use(
     },
     async (accessToken, refreshToken, profile, done) => {
       console.log('access token ', accessToken);
-      console.log('refresh token ', refreshToken);
+      // console.log('refresh token ', refreshToken);
       console.log('profile ', profile);
 
-      const existingUser = await User.findOne({ instagramid: profile.id });
+      const existingUser = await User.findOne({ instagramId: profile.id });
 
       if (existingUser) {
+        console.log('OLI JO KÄYTTÄJÄ');
         done(null, existingUser);
       } else {
-        const user = await new User({ instagramid: profile.id }).save();
+        console.log('LUOTIIN UUSI KÄYTTÄJÄ');
+        const user = await new User({ instagramId: profile.id, accessToken }).save();
         done(null, user);
       }
     }

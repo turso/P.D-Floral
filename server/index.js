@@ -1,6 +1,7 @@
 const express = require('express');
 const next = require('next');
 const bodyParser = require('body-parser');
+const cookieSession = require('cookie-session');
 const morgan = require('morgan');
 const config = require('./utils/config');
 
@@ -25,7 +26,7 @@ const handle = nextApp.getRequestHandler();
 
 nextApp
   .prepare()
-  .then(async () => {
+  .then(() => {
     const app = express();
 
     app.use(cors());
@@ -59,8 +60,7 @@ nextApp
 
     // Default catch-all handler to allow Next.js to handle all other routes
     app.all('*', (req, res) => {
-      let nextRequestHandler = nextApp.getRequestHandler();
-      return nextRequestHandler(req, res);
+      return handle(req, res);
     });
 
     app.listen(process.env.PORT, err => {

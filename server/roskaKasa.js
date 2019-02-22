@@ -9,7 +9,6 @@ const nextApp = next({ dev });
 const nextAuth = require('next-auth');
 const nextAuthConfig = require('./next-auth.config');
 const passport = require('passport');
-const SpotifyStrategy = require('passport-spotify').Strategy;
 const InstagramStrategy = require('passport-instagram');
 
 const handle = nextApp.getRequestHandler();
@@ -17,7 +16,6 @@ const mongoose = require('mongoose');
 const cors = require('cors');
 const server = express();
 const cookieParser = require('cookie-parser');
-let request = require('request'); // "Request" library
 
 const User = require('./models/user');
 
@@ -132,11 +130,3 @@ nextApp
     console.log('An error occurred, unable to start the server');
     console.log(err);
   });
-
-// app.get('/about', (req, res) => {
-//   return app.render(req, res, '/about', req.query);
-// });
-
-// server.get('*', (req, res) => {
-//   return handle(req, res);
-// });
