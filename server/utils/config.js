@@ -8,6 +8,7 @@ let cookieKey = process.env.COOKIE_KEY;
 let clientId = process.env.INSTAGRAM_CLIENT_ID;
 let clientSecret = process.env.INSTAGRAM_CLIENT_SECRET;
 let callbackUrl = process.env.INSTAGRAM_REDIRECT_URL;
+let accessToken = process.env.INSTAGRAM_ACCESS_TOKEN;
 
 if (process.env.NODE_ENV === 'test') {
   port = process.env.TEST_PORT;
@@ -20,5 +21,6 @@ module.exports = {
   cookieKey,
   clientId,
   clientSecret,
-  callbackUrl
+  callbackUrl,
+  accessToken
 };

@@ -2,9 +2,10 @@ import React from 'react';
 import styled from 'styled-components';
 import PhotoList from '../components/PhotoList';
 
-const Title = styled.h1`
-  color: red;
-  font-size: 50px;
-`;
+const Photos = props => (
+  <div>
+    <PhotoList />
+  </div>
+);
 
-export default () => <PhotoList />;
+export default Photos;
