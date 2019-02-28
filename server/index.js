@@ -11,8 +11,10 @@ const passport = require('passport');
 const mongoose = require('mongoose');
 const cors = require('cors');
 require('./utils/passport');
-
 const axios = require('axios');
+
+const photoRoutes = require('./routes/photoRoutes').router;
+const photoApiRoute = require('./pageApi/photos');
 
 mongoose
   .connect(config.mongoUrl)
@@ -59,6 +61,18 @@ nextApp
 
     //   res.redirect('/photos');
     // });
+
+    // app.get('/photos', async (req, res) => {
+    //   const url = `https://api.instagram.com/v1/users/self/media/recent/?access_token=${config.accessToken}`;
+    //   const photos = await axios.get(url);
+    //   res.json(photos.data.data);
+    // });
+
+    app.use('/api', photoRoutes);
+
+    app.get('/photos', (req, res) => {
+      photoApiRoute(nextApp, req, res);
+    });
 
     // Default catch-all handler to allow Next.js to handle all other routes
     app.all('*', (req, res) => {
