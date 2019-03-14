@@ -1,20 +1,15 @@
-import Link from 'next/link';
+import React from 'react';
+import { NavLink } from 'react-router-dom';
 import NavStyles from './styles/NavStyles';
 
 const Nav = () => (
   <NavStyles>
-    <Link as={`/`} href="/index">
-      <a>Home</a>
-    </Link>
-    <Link href="/about">
-      <a>About</a>
-    </Link>
-    <Link href="/contact">
-      <a>Contact</a>
-    </Link>
-    <Link href="/photos">
-      <a>Photos</a>
-    </Link>
+    <NavLink exact to="/">
+      Home
+    </NavLink>
+    <NavLink to="/about">About</NavLink>
+    <NavLink to="/blogs">Contact</NavLink>
+    <NavLink to="/photos">Photos</NavLink>
   </NavStyles>
 );
 

@@ -1,11 +1,15 @@
 import React from 'react';
+import { BrowserRouter as Router, Switch } from 'react-router-dom';
 import { connect } from 'react-redux';
 import styled, { createGlobalStyle } from 'styled-components';
+import routes from './components/routes';
+import FancyRoute from './components/FancyRoute';
+import Nav from './components/Nav';
 
 // import { anecdoteInitialization } from './actionCreators';
 
 const Inner = styled.div`
-  max-width: 120px;
+  max-width: 1280px;
   margin: 0 auto;
   /* padding: 2rem; */
 `;
@@ -48,7 +52,12 @@ class App extends React.Component {
     return (
       <div>
         <GlobalStyle />
-        <h1>Programming Anecdotes</h1>
+        <Router>
+          <div>
+            <Nav />
+            <Switch>{routes.map((route, i) => <FancyRoute key={i} {...route} />)}</Switch>
+          </div>
+        </Router>
       </div>
     );
   }
