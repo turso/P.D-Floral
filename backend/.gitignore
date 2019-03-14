@@ -1,9 +1,9 @@
 # dependencies
-/node_modules
+node_modules/
 
 # variables
 .env
 
 # build
 .next
-/static
+static/

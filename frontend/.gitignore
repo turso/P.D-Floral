@@ -1,11 +1,12 @@
 # dependencies
-/node_modules
+node_modules/
 
 # variables
 .env
 
 # build
 .next
-/static
-/dist
-/cache
+static/
+dist/
+cache/
+.cache
