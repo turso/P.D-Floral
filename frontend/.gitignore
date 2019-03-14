@@ -1,0 +1,11 @@
+# dependencies
+/node_modules
+
+# variables
+.env
+
+# build
+.next
+/static
+/dist
+/cache
