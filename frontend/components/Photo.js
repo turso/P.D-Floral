@@ -26,7 +26,6 @@ const PhotoCard = styled.div`
 const FormatDateToNow = createdTime => {
   const dateNow = moment(new Date()).format('X');
   const timeDifference = dateNow - createdTime;
-  // let formatoituUnix = moment.unix(result).format('MMMM D, YYYY');
   const formattedTime = Math.round(timeDifference / 60 / 60 / 24);
   const months = formattedTime / 30;
 

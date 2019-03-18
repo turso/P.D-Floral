@@ -33,13 +33,9 @@ export default class Photos extends Component {
     const isServer = !!req;
     if (isServer) {
       const images = res.locals.images;
-      console.log('FRONTISSA KUVAT OVAT SERVER SIDE', images);
-      console.log('got data in server side:');
       return { images };
     } else {
       const response = await Axios.get('/api/getPhotos');
-      console.log('CLIENT FRONT KUVAT OVAT ', response.data.images);
-      console.log('got data in client side.');
       return { images: response.data.images };
     }
   }
@@ -49,7 +45,6 @@ export default class Photos extends Component {
       <Masonry>
         {this.props.images.map(photo => (
           <Photo key={photo.images.low_resolution.url} data={photo} />
-          // <img src={x.images.low_resolution.url} key={x.images.low_resolution.url} />
         ))}
       </Masonry>
     );
