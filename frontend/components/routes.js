@@ -1,6 +1,6 @@
 import Home from './views/Home';
 import About from './views/About';
-import Blogs from './views/Blogs';
+import Contact from './views/Contact';
 
 const routes = [
   {
@@ -10,14 +10,18 @@ const routes = [
     component: Home
   },
   {
-    title: 'Blogs',
-    path: '/blogs',
-    component: Blogs
+    title: 'Contact',
+    path: '/contact',
+    component: Contact
   },
   {
     title: 'About',
     path: '/about',
     component: About
+  },
+  {
+    title: 'Photos',
+    path: '/photos'
   }
 ];
 
