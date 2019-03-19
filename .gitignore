@@ -7,4 +7,9 @@
 
 # build
 .next
+.cache/
+dist/
 /static
+
+package.json
+package-lock.json
