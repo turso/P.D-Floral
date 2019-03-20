@@ -1,42 +1,49 @@
 const axios = require('axios');
-const { Router } = require('express');
-const router = Router();
+const photoRouter = require('express').Router();
 const config = require('../utils/config');
 
-router.route('/getPhotos').get(getPhotos);
+// function getPhotos(req, res) {
+//   getAllPhotos()
+//     .then(response => {
+//       // console.log('CLIENT DATA ON', response);
+//       res.status(200).json({ images: response.data });
+//     })
+//     .catch(e => {
+//       res.status(500);
+//     });
+// }
 
-function getPhotos(req, res) {
-  getAllPhotos()
-    .then(response => {
-      // console.log('CLIENT DATA ON', response);
-      res.status(200).json({ images: response.data });
-    })
-    .catch(e => {
-      res.status(500);
-    });
-}
+// function getAllPhotos() {
+//   return new Promise((resolve, reject) => {
+//     getPhotosFromAPI()
+//       .then(res => {
+//         const photos = res.data;
+//         // console.log('KUVAT NÄYTTÄÄ TÄLTÄ', photos);
+//         resolve(photos);
+//       })
+//       .catch(e => {
+//         reject(e);
+//       });
+//   });
+// }
 
-function getAllPhotos() {
-  return new Promise((resolve, reject) => {
-    getPhotosFromAPI()
-      .then(res => {
-        const photos = res.data;
-        // console.log('KUVAT NÄYTTÄÄ TÄLTÄ', photos);
-        resolve(photos);
-      })
-      .catch(e => {
-        reject(e);
-      });
-  });
-}
-
-function getPhotosFromAPI() {
-  return axios.get(
+photoRouter.get('/', async (req, res) => {
+  const data = await axios.get(
     `https://api.instagram.com/v1/users/self/media/recent/?access_token=${config.accessToken}`
   );
-}
+  console.log('DAtA ON', data.data);
+  res.send(data.data.data);
+  // console.log('DATA ON', data.data);
+  // res(data);
+  // return axios.get(
+  //   `https://api.instagram.com/v1/users/self/media/recent/?access_token=${config.accessToken}`
+  // );
+});
 
-module.exports = {
-  getAllPhotos: getAllPhotos,
-  router: router
-};
+// function getPhotosFromAPI() {
+//   return axios.get(
+//     `https://api.instagram.com/v1/users/self/media/recent/?access_token=${config.accessToken}`
+//   );
+// }
+
+module.exports = photoRouter;
