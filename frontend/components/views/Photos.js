@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Masonry from 'react-masonry-component';
 import styled from 'styled-components';
 import moment from 'moment';
+import nprogress from 'nprogress';
 import photoService from '../../services/photos';
 import Photo from '../Photo';
 
@@ -10,20 +11,19 @@ const PhotoCard = styled.a`
   border-width: medium;
   text-align: center; */
   display: block;
-  padding: 4px;
+  /* padding: 4px; */
   margin-bottom: 20px;
   line-height: 2;
   background-color: #fff;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-  -webkit-transition: all 0.2s ease-in-out;
-  transition: all 0.2s ease-in-out;
+  border: 1px solid #e5e5e5;
+  /* border-radius: 4px; */
 `;
 
 const StyledText = styled.div`
   font-size: 1.3rem;
   max-width: 100%;
   padding: 0.9rem;
+  font-weight: 400;
   /* border-style: solid;
   border-width: medium;
   text-align: center;
@@ -31,7 +31,38 @@ const StyledText = styled.div`
   margin-top: 1rem; */
 `;
 
-const StyledImg = styled.img`@media screen and (max-width: 320px) {max-width: 100%;}`;
+const StyledImg = styled.img`
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+  @media screen and (max-width: 320px) {
+    max-width: 100%;
+  }
+`;
+
+const ProfileContainer = styled.div`
+  padding: 0.9rem;
+  height: 5.5rem;
+`;
+
+const ProfilePicture = styled.img`
+  border-radius: 50%;
+  border-color: white;
+  margin: 0 11px 0 0;
+  height: 30px;
+  float: left;
+`;
+
+const ProfileName = styled.div`
+  font-size: 14px;
+  margin-top: 6px;
+  line-height: 20px;
+  color: #3a3a3a;
+`;
+
+const ProfileDate = styled.div`/* font-size: 14px;
+  float: right;
+  margin-top: 6px; */`;
 
 const FormatDateToNow = createdTime => {
   const dateNow = moment(new Date()).format('X');
@@ -66,8 +97,12 @@ export default class Photos extends Component {
       const photoCards = photos.map(photo => (
         <div className="card" key={photo.caption.id}>
           <PhotoCard>
-            <div>{FormatDateToNow(photo.created_time)}</div>
-            <StyledImg src={photo.images.low_resolution.url} />
+            <ProfileContainer>
+              <ProfilePicture src={photo.user.profile_picture} />
+              <ProfileName>{photo.user.username}</ProfileName>
+              <ProfileDate>{FormatDateToNow(photo.created_time)}</ProfileDate>
+            </ProfileContainer>
+            <StyledImg src={photo.images.standard_resolution.url} />
             {/* <div> {photo.caption.text}</div> */}
             <StyledText>{photo.caption.text}</StyledText>
           </PhotoCard>
