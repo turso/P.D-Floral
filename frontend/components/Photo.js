@@ -14,13 +14,13 @@ const PhotoCard = styled.div`
   border-style: solid;
   border-width: medium; */
 
-  font-size: 0.9rem;
+  /* font-size: 0.9rem;
   max-width: 30rem;
   border-style: solid;
   border-width: medium;
   text-align: center;
   padding: 0.5rem;
-  margin-top: 1rem;
+  margin-top: 1rem; */
 `;
 
 const FormatDateToNow = createdTime => {
@@ -38,12 +38,12 @@ const FormatDateToNow = createdTime => {
 
 const Photo = ({ data }) => {
   return (
-    <PhotoCard>
-      {FormatDateToNow(data.created_time)}
+    <Masonry>
+      {/* {FormatDateToNow(data.created_time)} */}
       {/* <img src={data.user.profile_picture} /> */}
       <img src={data.images.low_resolution.url} />
-      {data.caption.text}
-    </PhotoCard>
+      {/* {data.caption.text} */}
+    </Masonry>
   );
 };
 
