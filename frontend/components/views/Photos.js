@@ -2,9 +2,7 @@ import React, { Component } from 'react';
 import Masonry from 'react-masonry-component';
 import styled from 'styled-components';
 import moment from 'moment';
-import nprogress from 'nprogress';
 import photoService from '../../services/photos';
-import Photo from '../Photo';
 
 const PhotoCard = styled.a`
   /* border-style: solid;
@@ -53,16 +51,21 @@ const ProfilePicture = styled.img`
   float: left;
 `;
 
-const ProfileName = styled.div`
+const ProfileName = styled.span`
   font-size: 14px;
-  margin-top: 6px;
-  line-height: 20px;
+  /* margin-top: 6px;
+  line-height: 20px; */
   color: #3a3a3a;
 `;
 
-const ProfileDate = styled.div`/* font-size: 14px;
+const ProfileDate = styled.span`
   float: right;
-  margin-top: 6px; */`;
+  font-size: 14px;
+`;
+
+const style = {
+  marginTop: '1rem'
+};
 
 const FormatDateToNow = createdTime => {
   const dateNow = moment(new Date()).format('X');
@@ -109,7 +112,7 @@ export default class Photos extends Component {
         </div>
       ));
 
-      return <Masonry>{photoCards}</Masonry>;
+      return <Masonry style={style}>{photoCards}</Masonry>;
     }
 
     return <div />;
