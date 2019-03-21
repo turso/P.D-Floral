@@ -18,15 +18,13 @@ const NavStyles = styled.ul`
     background: none;
     border: 0;
     cursor: pointer;
-    color: ${props => props.theme.black};
-    @media (max-width: 700px) {
+    /* @media (max-width: 700px) {
       font-size: 10px;
       padding: 0 10px;
-    }
+    } */
     &:before {
       content: '';
       width: 2px;
-      background: ${props => props.theme.lightgrey};
       height: 100%;
       left: 0;
       position: absolute;
@@ -52,9 +50,9 @@ const NavStyles = styled.ul`
       &:after {
         width: calc(100% - 60px);
       }
-      @media (max-width: 700px) {
+      /* @media (max-width: 700px) {
         width: calc(100% - 10px);
-      }
+      } */
     }
   }
   @media (max-width: 1300px) {

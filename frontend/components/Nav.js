@@ -1,9 +1,11 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import NavStyles from './styles/NavStyles';
+import MenuIcon from './icons/menu';
 
 const Nav = () => (
   <NavStyles>
+    <MenuIcon />
     <NavLink exact to="/">
       Home
     </NavLink>
