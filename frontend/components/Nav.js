@@ -36,27 +36,40 @@ const MobileHeaderText = styled.a`
 `;
 
 const MobileNavLinkContainer = styled.div`
-  z-index: 99;
-  height: 1px;
-  text-align: center;
-  /* display: none;
+  li {
+    z-index: 99;
+    height: 0;
+    text-align: center;
+    background-color: coral;
+    /* display: none;
   visibility: hidden; */
-  max-height: 300px;
-  font-size: 22px;
-  overflow-x: visible;
-  border-bottom: 1px solid #ccc;
-  display: block;
+    max-height: 300px;
+    font-size: 22px;
+    overflow-x: visible;
+    border-bottom: 1px solid #ccc;
+    display: block;
+    transition: all 0.5s ease;
+  }
+  ul {
+    list-style: none;
+    position: relative;
+  }
 `;
 
 const MobileNavLink = styled.li`
   list-style: none;
   position: relative;
+  /* background-color: green; */
+`;
+
+const LinkBlock = styled(NavLink)`
+  display: block;
+  transition: all 0.5s ease;
 `;
 
 class Nav extends React.Component {
   constructor() {
     super();
-
     this.state = {
       isOpen: false
     };
@@ -69,7 +82,10 @@ class Nav extends React.Component {
   }
 
   render() {
-    const isOpen = { display: this.state.isOpen ? '' : 'none' };
+    // TODO: Change height: 200 to something better (not hardcoded)
+    const isOpen = { height: this.state.isOpen ? '200px' : '0' };
+    const isVisible = { display: this.state.isOpen ? '' : 'none' };
+    const High = { height: this.state.isOpen ? '44px' : '0' };
 
     return (
       <div>
@@ -89,22 +105,28 @@ class Nav extends React.Component {
           </div>
 
           <MobileNavLinkContainer>
-            <ul style={isOpen}>
-              <MobileNavLink>
-                <NavLink exact to="/">
+            <li style={isOpen}>
+              <ul>
+                <LinkBlock exact to="/" style={(isVisible, High)}>
                   Home
-                </NavLink>
-              </MobileNavLink>
-              <MobileNavLink>
-                <NavLink to="/about">About</NavLink>
-              </MobileNavLink>
-              <MobileNavLink>
-                <NavLink to="/contact">Contact</NavLink>
-              </MobileNavLink>
-              <MobileNavLink>
-                <NavLink to="/photos">Photos</NavLink>
-              </MobileNavLink>
-            </ul>
+                </LinkBlock>
+              </ul>
+              <ul>
+                <LinkBlock to="/about" style={(isVisible, High)}>
+                  About
+                </LinkBlock>
+              </ul>
+              <ul>
+                <LinkBlock to="/contact" style={(isVisible, High)}>
+                  Contact
+                </LinkBlock>
+              </ul>
+              <ul>
+                <LinkBlock to="/photos" style={(isVisible, High)}>
+                  Photos
+                </LinkBlock>
+              </ul>
+            </li>
           </MobileNavLinkContainer>
         </MobileNavContainer>
       </div>
