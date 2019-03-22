@@ -1,4 +1,10 @@
 import React from 'react';
+import styled from 'styled-components';
+
+const MobileButton = styled.button`
+  float: right;
+  position: relative;
+`;
 
 class BaseIcon extends React.Component {
   constructor(props) {
@@ -27,9 +33,16 @@ class BaseIcon extends React.Component {
     const buttonClass = ['tcon', animationClass, `${transform}`].join(' ');
 
     return (
-      <button aria-label={this.props.ariaLabel} className={buttonClass} onClick={this.handleClick}>
+      <MobileButton
+        aria-label={this.props.ariaLabel}
+        className={buttonClass}
+        onClick={() => {
+          this.handleClick();
+          this.props.handler();
+        }}
+      >
         {this.props.children}
-      </button>
+      </MobileButton>
     );
   }
 }
