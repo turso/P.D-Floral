@@ -1,6 +1,77 @@
 import styled, { keyframes } from 'styled-components';
 import { NavLink } from 'react-router-dom';
 
+const toggleLinkKeyframes = keyframes`
+  0% {
+    display:block;
+  }
+  55% {
+    opacity: 0.3;
+  }
+  65% {
+    visibility: hidden;
+  }
+  100% {
+    visibility:hidden;
+    display: none;
+    opacity: 0.1;
+  }
+`;
+
+const toggleReverseKeyFrames = keyframes`
+    0% {
+    height: 190px;
+    display: block;
+    z-index: 99;
+  }
+  100% {
+    height: 0px;
+    display: none;
+    z-index: -1;
+  }
+`;
+
+const toggleReverseUlKeyFrames = keyframes`
+    0% {
+    height: 44px;
+    display: block;
+  }
+  100% {
+    height: 0px;
+    display: none;
+  }
+`;
+
+const ReverseContainer = styled.div`
+  li {
+    z-index: 99;
+    text-align: center;
+    font-size: 22px;
+    overflow-x: visible;
+    list-style: none;
+    animation-name: ${toggleReverseKeyFrames};
+    animation-duration: 0.6s;
+    animation-timing-function: ease;
+    animation-delay: 0s;
+    animation-iteration-count: 1;
+    animation-direction: normal;
+    animation-fill-mode: forwards;
+    animation-play-state: running;
+  }
+  ul {
+    list-style: none;
+    position: relative;
+    animation-name: ${toggleReverseUlKeyFrames};
+    animation-duration: 0.6s;
+    animation-timing-function: ease;
+    animation-delay: 0s;
+    animation-iteration-count: 1;
+    animation-direction: normal;
+    animation-fill-mode: forwards;
+    animation-play-state: running;
+  }
+`;
+
 const toggleNavKeyframes = keyframes`
   0% {
     height: 0px;
@@ -87,6 +158,18 @@ const MobileNavLinkContainer = styled.div`
 
 const LinkBlock = styled(NavLink)`display: block;`;
 
+const ReverseLinkBlock = styled(NavLink)`
+  display: block;
+  animation-name: ${toggleLinkKeyframes};
+  animation-duration: 0.6s;
+  animation-timing-function: ease;
+  animation-delay: 0s;
+  animation-iteration-count: 1;
+  animation-direction: normal;
+  animation-fill-mode: forwards;
+  animation-play-state: running;
+`;
+
 const NavStyles = styled.ul`
   @media (max-width: 640px) {
     display: none;
@@ -146,4 +229,12 @@ const NavStyles = styled.ul`
   }
 `;
 
-export { MobileNavContainer, MobileHeaderText, MobileNavLinkContainer, LinkBlock, NavStyles };
+export {
+  MobileNavContainer,
+  MobileHeaderText,
+  MobileNavLinkContainer,
+  LinkBlock,
+  ReverseLinkBlock,
+  NavStyles,
+  ReverseContainer
+};

@@ -5,27 +5,79 @@ import {
   MobileHeaderText,
   MobileNavLinkContainer,
   LinkBlock,
-  NavStyles
+  ReverseLinkBlock,
+  NavStyles,
+  ReverseContainer
 } from './styles/NavStyles';
 import MenuIcon from './icons/menu';
+
+const MobileNavBar = ({ isItOpen, firstRender }) => {
+  if (isItOpen) {
+    return (
+      <MobileNavLinkContainer>
+        <li>
+          <ul>
+            <LinkBlock exact to="/">
+              Home
+            </LinkBlock>
+          </ul>
+          <ul>
+            <LinkBlock to="/about">About</LinkBlock>
+          </ul>
+          <ul>
+            <LinkBlock to="/contact">Contact</LinkBlock>
+          </ul>
+          <ul>
+            <LinkBlock to="/photos">Photos</LinkBlock>
+          </ul>
+        </li>
+      </MobileNavLinkContainer>
+    );
+  }
+
+  if (!isItOpen && !firstRender) {
+    return (
+      <ReverseContainer>
+        <li>
+          <ul>
+            <ReverseLinkBlock exact to="/">
+              Home
+            </ReverseLinkBlock>
+          </ul>
+          <ul>
+            <ReverseLinkBlock to="/about">About</ReverseLinkBlock>
+          </ul>
+          <ul>
+            <ReverseLinkBlock to="/contact">Contact</ReverseLinkBlock>
+          </ul>
+          <ul>
+            <ReverseLinkBlock to="/photos">Photos</ReverseLinkBlock>
+          </ul>
+        </li>
+      </ReverseContainer>
+    );
+  }
+
+  return <div />;
+};
 
 class Nav extends React.Component {
   constructor() {
     super();
     this.state = {
-      isOpen: false
+      isOpen: false,
+      isFirstRendered: true
     };
   }
 
   handleClick() {
     this.setState({
-      isOpen: !this.state.isOpen
+      isOpen: !this.state.isOpen,
+      isFirstRendered: false
     });
   }
 
   render() {
-    const isItOpen = this.state.isOpen;
-
     return (
       <div>
         <NavStyles>
@@ -43,28 +95,7 @@ class Nav extends React.Component {
             <MenuIcon animation="x-cross" handler={this.handleClick.bind(this)} />
           </div>
 
-          {isItOpen ? (
-            <MobileNavLinkContainer>
-              <li>
-                <ul>
-                  <LinkBlock exact to="/">
-                    Home
-                  </LinkBlock>
-                </ul>
-                <ul>
-                  <LinkBlock to="/about">About</LinkBlock>
-                </ul>
-                <ul>
-                  <LinkBlock to="/contact">Contact</LinkBlock>
-                </ul>
-                <ul>
-                  <LinkBlock to="/photos">Photos</LinkBlock>
-                </ul>
-              </li>
-            </MobileNavLinkContainer>
-          ) : (
-            <div />
-          )}
+          <MobileNavBar isItOpen={this.state.isOpen} firstRender={this.state.isFirstRendered} />
         </MobileNavContainer>
       </div>
     );
