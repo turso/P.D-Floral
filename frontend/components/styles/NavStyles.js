@@ -72,6 +72,18 @@ const ReverseContainer = styled.div`
   }
 `;
 
+const ReverseLinkBlock = styled(NavLink)`
+  display: block;
+  animation-name: ${toggleLinkKeyframes};
+  animation-duration: 0.6s;
+  animation-timing-function: ease;
+  animation-delay: 0s;
+  animation-iteration-count: 1;
+  animation-direction: normal;
+  animation-fill-mode: forwards;
+  animation-play-state: running;
+`;
+
 const toggleNavKeyframes = keyframes`
   0% {
     height: 0px;
@@ -157,18 +169,6 @@ const MobileNavLinkContainer = styled.div`
 `;
 
 const LinkBlock = styled(NavLink)`display: block;`;
-
-const ReverseLinkBlock = styled(NavLink)`
-  display: block;
-  animation-name: ${toggleLinkKeyframes};
-  animation-duration: 0.6s;
-  animation-timing-function: ease;
-  animation-delay: 0s;
-  animation-iteration-count: 1;
-  animation-direction: normal;
-  animation-fill-mode: forwards;
-  animation-play-state: running;
-`;
 
 const NavStyles = styled.ul`
   @media (max-width: 640px) {

@@ -18,10 +18,13 @@ const PhotoCard = styled.a`
 `;
 
 const StyledText = styled.div`
-  font-size: 1.3rem;
+  @import url('https://fonts.googleapis.com/css?family=Montserrat');
+  font-family: 'Montserrat', sans-serif;
+  font-size: 14px;
   max-width: 100%;
   padding: 0.9rem;
-  font-weight: 400;
+  font-weight: 300;
+  -webkit-font-smoothing: antialiased;
   /* border-style: solid;
   border-width: medium;
   text-align: center;
