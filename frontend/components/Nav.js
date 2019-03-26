@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
+import { withTranslation } from 'react-i18next';
 import {
   MobileNavContainer,
   MobileHeaderText,
@@ -61,45 +62,51 @@ const MobileNavBar = ({ isItOpen, firstRender }) => {
   return <div />;
 };
 
-class Nav extends React.Component {
-  constructor() {
-    super();
-    this.state = {
-      isOpen: false,
-      isFirstRendered: true
-    };
+const Nav = props => {
+  // constructor() {
+  //   super();
+  //   this.state = {
+  //     isOpen: false,
+  //     isFirstRendered: true
+  //   };
+  // }
+  let [isOpen] = useState(false);
+  let [isFirstRendered] = useState(true);
+
+  // handleClick() {
+  //   this.setState({
+  //     isOpen: !this.state.isOpen,
+  //     isFirstRendered: false
+  //   });
+  // }
+  function handleClick() {
+    isOpen(!isOpen);
+    isFirstRendered(false);
   }
 
-  handleClick() {
-    this.setState({
-      isOpen: !this.state.isOpen,
-      isFirstRendered: false
-    });
-  }
+  return (
+    <div>
+      <NavStyles>
+        <NavLink exact to="/">
+          Home
+        </NavLink>
+        <NavLink to="/about">About</NavLink>
+        <NavLink to="/contact">Contact</NavLink>
+        <NavLink to="/photos">Photos</NavLink>
+        <button onClick={() => changeLanguage('fi')}>fi</button>
+        <button onClick={() => changeLanguage('en')}>en</button>
+      </NavStyles>
 
-  render() {
-    return (
-      <div>
-        <NavStyles>
-          <NavLink exact to="/">
-            Home
-          </NavLink>
-          <NavLink to="/about">About</NavLink>
-          <NavLink to="/contact">Contact</NavLink>
-          <NavLink to="/photos">Photos</NavLink>
-        </NavStyles>
+      <MobileNavContainer>
+        <div>
+          <MobileHeaderText>PD FLORAL</MobileHeaderText>
+          <MenuIcon animation="x-cross" handler={() => handleClick()} />
+        </div>
 
-        <MobileNavContainer>
-          <div>
-            <MobileHeaderText>PD FLORAL</MobileHeaderText>
-            <MenuIcon animation="x-cross" handler={this.handleClick.bind(this)} />
-          </div>
-
-          <MobileNavBar isItOpen={this.state.isOpen} firstRender={this.state.isFirstRendered} />
-        </MobileNavContainer>
-      </div>
-    );
-  }
-}
+        <MobileNavBar isItOpen={this.state.isOpen} firstRender={this.state.isFirstRendered} />
+      </MobileNavContainer>
+    </div>
+  );
+};
 
 export default Nav;

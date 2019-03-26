@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import Masonry from 'react-masonry-component';
-import styled from 'styled-components';
 import moment from 'moment';
 import photoService from '../../services/photos';
 import {
@@ -52,7 +51,6 @@ export default class Photos extends Component {
               <ProfileDate>{FormatDateToNow(photo.created_time)}</ProfileDate>
             </ProfileContainer>
             <StyledImg src={photo.images.standard_resolution.url} />
-            {/* <div> {photo.caption.text}</div> */}
             <StyledText>{photo.caption.text}</StyledText>
           </PhotoCard>
         </div>

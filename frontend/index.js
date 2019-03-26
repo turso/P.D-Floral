@@ -4,6 +4,7 @@ import { Provider } from 'react-redux';
 import { Normalize } from 'styled-normalize';
 import App from './App';
 import store from './store';
+import './i18n';
 
 ReactDOM.render(
   <Provider store={store}>

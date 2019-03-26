@@ -5,7 +5,6 @@ import styled, { createGlobalStyle } from 'styled-components';
 import routes from './components/routes';
 import FancyRoute from './components/FancyRoute';
 import Nav from './components/Nav';
-import './i18n';
 
 // import { anecdoteInitialization } from './actionCreators';
 
