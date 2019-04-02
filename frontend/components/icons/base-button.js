@@ -4,6 +4,7 @@ import styled from 'styled-components';
 const MobileButton = styled.button`
   float: right;
   position: relative;
+  padding-top: 0.3rem;
 `;
 
 class BaseIcon extends React.Component {
