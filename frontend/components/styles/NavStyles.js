@@ -19,7 +19,7 @@ const toggleLinkKeyframes = keyframes`
 `;
 
 const toggleReverseKeyFrames = keyframes`
-    0% {
+    /* 0% {
     height: 190px;
     display: block;
     z-index: 99;
@@ -28,7 +28,7 @@ const toggleReverseKeyFrames = keyframes`
     height: 0px;
     display: none;
     z-index: -1;
-  }
+  } */
 `;
 
 const toggleReverseUlKeyFrames = keyframes`

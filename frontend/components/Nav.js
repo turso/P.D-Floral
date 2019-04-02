@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
-import { withTranslation } from 'react-i18next';
+import { useTranslation } from 'react-i18next';
 import {
   MobileNavContainer,
   MobileHeaderText,
@@ -63,26 +63,19 @@ const MobileNavBar = ({ isItOpen, firstRender }) => {
 };
 
 const Nav = props => {
-  // constructor() {
-  //   super();
-  //   this.state = {
-  //     isOpen: false,
-  //     isFirstRendered: true
-  //   };
-  // }
-  let [isOpen] = useState(false);
-  let [isFirstRendered] = useState(true);
+  let [open, setOpen] = useState(false);
+  let [firstRender, setFirstRender] = useState(true);
 
-  // handleClick() {
-  //   this.setState({
-  //     isOpen: !this.state.isOpen,
-  //     isFirstRendered: false
-  //   });
-  // }
   function handleClick() {
-    isOpen(!isOpen);
-    isFirstRendered(false);
+    setOpen(!open);
+    setFirstRender(false);
   }
+
+  const { t, i18n } = useTranslation();
+
+  const changeLanguage = lng => {
+    i18n.changeLanguage(lng);
+  };
 
   return (
     <div>
@@ -103,7 +96,7 @@ const Nav = props => {
           <MenuIcon animation="x-cross" handler={() => handleClick()} />
         </div>
 
-        <MobileNavBar isItOpen={this.state.isOpen} firstRender={this.state.isFirstRendered} />
+        <MobileNavBar isItOpen={open} firstRender={firstRender} />
       </MobileNavContainer>
     </div>
   );

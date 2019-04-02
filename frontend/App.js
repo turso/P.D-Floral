@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Suspense } from 'react';
 import { BrowserRouter as Router, Switch } from 'react-router-dom';
 import { connect } from 'react-redux';
 import styled, { createGlobalStyle } from 'styled-components';
@@ -42,6 +42,8 @@ const GlobalStyle = createGlobalStyle`
   }
 `;
 
+const Loader = () => <div>loading...</div>;
+
 class App extends React.Component {
   // componentDidMount = async () => {
   //   this.props.anecdoteInitialization();
@@ -54,7 +56,9 @@ class App extends React.Component {
           <GlobalStyle />
           <Router>
             <div>
-              <Nav />
+              <Suspense fallback={<Loader />}>
+                <Nav />
+              </Suspense>
               <Switch>{routes.map((route, i) => <FancyRoute key={i} {...route} />)}</Switch>
             </div>
           </Router>
