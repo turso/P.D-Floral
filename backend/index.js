@@ -8,6 +8,10 @@ const mongoose = require('mongoose');
 const config = require('./utils/config');
 const photoRouter = require('./routes/photoRoutes');
 
+process.on('uncaughtException', function(error) {
+  console.log(error.stack);
+});
+
 app.use(express.static('dist'));
 
 app.use(cors());
@@ -40,6 +44,20 @@ app.get('/*', function(req, res) {
     }
   });
 });
+
+const apiGet = async (name, url, params = {}) => {
+  try {
+    const promise = fetch(`${config.baseUrl}/${url}`, {
+      method: 'GET',
+      headers: new Headers({
+        Accept: 'application/json'
+      })
+    }).then(handleErrors);
+    return promise;
+  } catch (err) {
+    console.error(`${name} failed: ${err.message}`);
+  }
+};
 
 const server = http.createServer(app);
 

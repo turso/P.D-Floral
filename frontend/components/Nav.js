@@ -13,23 +13,25 @@ import {
 import MenuIcon from './icons/menu';
 
 const MobileNavBar = ({ isItOpen, firstRender }) => {
+  const { t } = useTranslation();
+
   if (isItOpen) {
     return (
       <MobileNavLinkContainer>
         <li>
           <ul>
             <LinkBlock exact to="/">
-              Home
+              {t('nav.home')}
             </LinkBlock>
           </ul>
           <ul>
-            <LinkBlock to="/about">About</LinkBlock>
+            <LinkBlock to="/about">{t('nav.about')}</LinkBlock>
           </ul>
           <ul>
-            <LinkBlock to="/contact">Contact</LinkBlock>
+            <LinkBlock to="/contact">{t('nav.contact')}</LinkBlock>
           </ul>
           <ul>
-            <LinkBlock to="/photos">Photos</LinkBlock>
+            <LinkBlock to="/photos">{t('nav.photos')}</LinkBlock>
           </ul>
         </li>
       </MobileNavLinkContainer>
@@ -42,17 +44,17 @@ const MobileNavBar = ({ isItOpen, firstRender }) => {
         <li>
           <ul>
             <ReverseLinkBlock exact to="/">
-              Home
+              {t('nav.home')}
             </ReverseLinkBlock>
           </ul>
           <ul>
-            <ReverseLinkBlock to="/about">About</ReverseLinkBlock>
+            <ReverseLinkBlock to="/about">{t('nav.about')}</ReverseLinkBlock>
           </ul>
           <ul>
-            <ReverseLinkBlock to="/contact">Contact</ReverseLinkBlock>
+            <ReverseLinkBlock to="/contact">{t('nav.contact')}</ReverseLinkBlock>
           </ul>
           <ul>
-            <ReverseLinkBlock to="/photos">Photos</ReverseLinkBlock>
+            <ReverseLinkBlock to="/photos">{t('nav.photos')}</ReverseLinkBlock>
           </ul>
         </li>
       </ReverseContainer>
@@ -62,7 +64,7 @@ const MobileNavBar = ({ isItOpen, firstRender }) => {
   return <div />;
 };
 
-const Nav = props => {
+function Nav() {
   let [open, setOpen] = useState(false);
   let [firstRender, setFirstRender] = useState(true);
 
@@ -81,11 +83,11 @@ const Nav = props => {
     <div>
       <NavStyles>
         <NavLink exact to="/">
-          Home
+          {t('nav.home')}
         </NavLink>
-        <NavLink to="/about">About</NavLink>
-        <NavLink to="/contact">Contact</NavLink>
-        <NavLink to="/photos">Photos</NavLink>
+        <NavLink to="/about">{t('nav.about')}</NavLink>
+        <NavLink to="/contact">{t('nav.contact')}</NavLink>
+        <NavLink to="/photos">{t('nav.photos')}</NavLink>
         <button onClick={() => changeLanguage('fi')}>fi</button>
         <button onClick={() => changeLanguage('en')}>en</button>
       </NavStyles>
@@ -100,6 +102,6 @@ const Nav = props => {
       </MobileNavContainer>
     </div>
   );
-};
+}
 
 export default Nav;
