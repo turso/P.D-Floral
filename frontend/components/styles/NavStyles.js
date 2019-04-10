@@ -168,7 +168,13 @@ const MobileNavLinkContainer = styled.div`
   }
 `;
 
-const LinkBlock = styled(NavLink)`display: block;`;
+const LinkBlock = styled(NavLink)`
+  display: block;
+  cursor: pointer;
+  :hover {
+    background: yellow;
+  }
+`;
 
 const NavStyles = styled.ul`
   @media (max-width: 640px) {
