@@ -198,16 +198,6 @@ const NavStyles = styled.ul`
     background: none;
     border: 0;
     cursor: pointer;
-    &:before {
-      content: '';
-      width: 2px;
-      height: 100%;
-      left: 0;
-      position: absolute;
-      transform: skew(-20deg);
-      top: 0;
-      bottom: 0;
-    }
     &:after {
       height: 2px;
       background: red;
@@ -235,12 +225,62 @@ const NavStyles = styled.ul`
   }
 `;
 
+const LanguageButtonContainer = styled.div`
+  display: flex;
+  float: right;
+  button {
+    padding: 1rem 3rem;
+    display: flex;
+    align-items: center;
+    position: relative;
+    text-transform: uppercase;
+    font-weight: 400;
+    font-size: 1.5rem;
+    background: none;
+    border: 0;
+    line-height: 2;
+    cursor: pointer;
+    &:after {
+      height: 2px;
+      background: red;
+      content: '';
+      width: 0;
+      position: absolute;
+      transform: translateX(-50%);
+      transition: width 0.6s;
+      transition-timing-function: cubic-bezier(1, -0.65, 0, 2.31);
+      left: 50%;
+      margin-top: 2rem;
+    }
+    &:hover,
+    &:focus {
+      outline: none;
+      &:after {
+        width: calc(100% - 60px);
+      }
+`;
+
+const NavLinkContainer = styled.div`
+  float: left;
+  display: flex;
+`;
+
+const NavContainer = styled.div`
+  padding-bottom: 6rem;
+  @media (max-width: 640px) {
+    padding-bottom: 1rem;
+  }
+`;
+
 export {
   MobileNavContainer,
   MobileHeaderText,
   MobileNavLinkContainer,
+  LanguageButtonContainer,
   LinkBlock,
   ReverseLinkBlock,
+  NavContainer,
+  NavLinkContainer,
   NavStyles,
   ReverseContainer
 };

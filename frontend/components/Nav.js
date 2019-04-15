@@ -5,8 +5,11 @@ import {
   MobileNavContainer,
   MobileHeaderText,
   MobileNavLinkContainer,
+  LanguageButtonContainer,
   LinkBlock,
   ReverseLinkBlock,
+  NavContainer,
+  NavLinkContainer,
   NavStyles,
   ReverseContainer
 } from './styles/NavStyles';
@@ -80,17 +83,21 @@ function Nav() {
   };
 
   return (
-    <div>
-      <NavStyles>
-        <NavLink exact to="/">
-          {t('nav.home')}
-        </NavLink>
-        <NavLink to="/about">{t('nav.about')}</NavLink>
-        <NavLink to="/contact">{t('nav.contact')}</NavLink>
-        <NavLink to="/photos">{t('nav.photos')}</NavLink>
+    <NavContainer>
+      <NavLinkContainer>
+        <NavStyles>
+          <NavLink exact to="/">
+            {t('nav.home')}
+          </NavLink>
+          <NavLink to="/about">{t('nav.about')}</NavLink>
+          <NavLink to="/contact">{t('nav.contact')}</NavLink>
+          <NavLink to="/photos">{t('nav.photos')}</NavLink>
+        </NavStyles>
+      </NavLinkContainer>
+      <LanguageButtonContainer>
         <button onClick={() => changeLanguage('fi')}>fi</button>
         <button onClick={() => changeLanguage('en')}>en</button>
-      </NavStyles>
+      </LanguageButtonContainer>
 
       <MobileNavContainer>
         <div>
@@ -100,7 +107,7 @@ function Nav() {
 
         <MobileNavBar isItOpen={open} firstRender={firstRender} />
       </MobileNavContainer>
-    </div>
+    </NavContainer>
   );
 }
 
