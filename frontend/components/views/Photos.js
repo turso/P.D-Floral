@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { useState, useEffect } from 'react';
 import Masonry from 'react-masonry-component';
 import moment from 'moment';
 import photoService from '../../services/photos';
@@ -25,40 +25,41 @@ const FormatDateToNow = createdTime => {
   }
 };
 
-export default class Photos extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      data: null
-    };
-  }
+const Photos = () => {
+  let [photos, setPhotos] = useState(null);
 
-  componentWillMount() {
-    photoService.getAll().then(data => this.setState({ data }));
-  }
+  useEffect(() => {
+    let isMounted = true;
 
-  render() {
-    console.log('DATA ON TÄÄLLÄ TÄLLAISTA NYT', this.state.data);
-    const photos = this.state.data;
+    photoService.getAll().then(data => {
+      if (isMounted) {
+        setPhotos(data);
+      }
+    });
+    return () => (isMounted = false);
+  }, []);
 
-    if (photos) {
-      const photoCards = photos.map(photo => (
-        <div className="card" key={photo.caption.id}>
-          <PhotoCard>
-            <ProfileContainer>
-              <ProfilePicture src={photo.user.profile_picture} />
-              <ProfileName>{photo.user.username}</ProfileName>
-              <ProfileDate>{FormatDateToNow(photo.created_time)}</ProfileDate>
-            </ProfileContainer>
-            <StyledImg src={photo.images.standard_resolution.url} />
-            <StyledText>{photo.caption.text}</StyledText>
-          </PhotoCard>
-        </div>
-      ));
+  console.log('DATA ON TÄÄLLÄ TÄLLAISTA NYT', photos);
 
-      return <Masonry className="masonry">{photoCards}</Masonry>;
-    }
+  if (photos) {
+    const photoCards = photos.map(photo => (
+      <div className="card" key={photo.caption.id}>
+        <PhotoCard>
+          <ProfileContainer>
+            <ProfilePicture src={photo.user.profile_picture} />
+            <ProfileName>{photo.user.username}</ProfileName>
+            <ProfileDate>{FormatDateToNow(photo.created_time)}</ProfileDate>
+          </ProfileContainer>
+          <StyledImg src={photo.images.standard_resolution.url} />
+          <StyledText>{photo.caption.text}</StyledText>
+        </PhotoCard>
+      </div>
+    ));
 
+    return <Masonry className="masonry">{photoCards}</Masonry>;
+  } else {
     return <div />;
   }
-}
+};
+
+export default Photos;

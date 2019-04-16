@@ -107,12 +107,12 @@ const toggleNavContainerKeyframes = keyframes`
 `;
 
 const MobileNavContainer = styled.div`
-  @media (min-width: 641px) {
+  @media only screen and (min-width: 705px) {
     display: none;
     margin-right: 2.5rem;
     margin-left: 2.5rem;
   }
-  @media (min-width: 320px) {
+  @media only screen and (min-width: 320px) {
     margin-right: 1.5rem;
     margin-left: 1.5rem;
   }
@@ -166,6 +166,13 @@ const MobileNavLinkContainer = styled.div`
     animation-fill-mode: forwards;
     animation-play-state: running;
   }
+  button {
+    display: block;
+    cursor: pointer;
+    :hover {
+      background: yellow;
+    }
+  }
 `;
 
 const LinkBlock = styled(NavLink)`
@@ -176,8 +183,16 @@ const LinkBlock = styled(NavLink)`
   }
 `;
 
+const MobileNavButton = styled.button`
+  display: block;
+  cursor: pointer;
+  :hover {
+    background: yellow;
+  }
+`;
+
 const NavStyles = styled.ul`
-  @media (max-width: 640px) {
+  @media only screen and (max-width: 705px) {
     display: none;
   }
 
@@ -226,6 +241,9 @@ const NavStyles = styled.ul`
 `;
 
 const LanguageButtonContainer = styled.div`
+  @media only screen and (max-width: 705px) {
+    display: none;
+  }
   display: flex;
   float: right;
   button {
@@ -258,6 +276,8 @@ const LanguageButtonContainer = styled.div`
       &:after {
         width: calc(100% - 60px);
       }
+    }
+  }
 `;
 
 const NavLinkContainer = styled.div`
@@ -267,7 +287,7 @@ const NavLinkContainer = styled.div`
 
 const NavContainer = styled.div`
   padding-bottom: 6rem;
-  @media (max-width: 640px) {
+  @media only screen and (max-width: 705px) {
     padding-bottom: 1rem;
   }
 `;
@@ -276,6 +296,7 @@ export {
   MobileNavContainer,
   MobileHeaderText,
   MobileNavLinkContainer,
+  MobileNavButton,
   LanguageButtonContainer,
   LinkBlock,
   ReverseLinkBlock,

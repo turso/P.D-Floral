@@ -16,7 +16,11 @@ import {
 import MenuIcon from './icons/menu';
 
 const MobileNavBar = ({ isItOpen, firstRender }) => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
+
+  const changeLanguage = lng => {
+    i18n.changeLanguage(lng);
+  };
 
   if (isItOpen) {
     return (
@@ -35,6 +39,12 @@ const MobileNavBar = ({ isItOpen, firstRender }) => {
           </ul>
           <ul>
             <LinkBlock to="/photos">{t('nav.photos')}</LinkBlock>
+          </ul>
+          <ul>
+            <button onClick={() => changeLanguage('fi')}>fi</button>
+          </ul>
+          <ul>
+            <button onClick={() => changeLanguage('en')}>en</button>
           </ul>
         </li>
       </MobileNavLinkContainer>
@@ -59,6 +69,12 @@ const MobileNavBar = ({ isItOpen, firstRender }) => {
           <ul>
             <ReverseLinkBlock to="/photos">{t('nav.photos')}</ReverseLinkBlock>
           </ul>
+          <ul>
+            <button onClick={() => changeLanguage('fi')}>fi</button>
+          </ul>
+          <ul>
+            <button onClick={() => changeLanguage('en')}>en</button>
+          </ul>
         </li>
       </ReverseContainer>
     );
@@ -67,7 +83,7 @@ const MobileNavBar = ({ isItOpen, firstRender }) => {
   return <div />;
 };
 
-function Nav() {
+const Nav = () => {
   let [open, setOpen] = useState(false);
   let [firstRender, setFirstRender] = useState(true);
 
@@ -109,6 +125,6 @@ function Nav() {
       </MobileNavContainer>
     </NavContainer>
   );
-}
+};
 
 export default Nav;
