@@ -20,7 +20,7 @@ const toggleLinkKeyframes = keyframes`
 
 const toggleReverseKeyFrames = keyframes`
     0% {
-    height: 190px;
+    height: 265px;
     display: block;
     z-index: 99;
   }
@@ -70,6 +70,16 @@ const ReverseContainer = styled.div`
     animation-fill-mode: forwards;
     animation-play-state: running;
   }
+  span {
+    animation-name: ${toggleLinkKeyframes};
+    animation-duration: 0.6s;
+    animation-timing-function: ease;
+    animation-delay: 0s;
+    animation-iteration-count: 1;
+    animation-direction: normal;
+    animation-fill-mode: forwards;
+    animation-play-state: running;
+  }
 `;
 
 const ReverseLinkBlock = styled(NavLink)`
@@ -101,7 +111,7 @@ const toggleNavContainerKeyframes = keyframes`
     display: none;
   }
   100% {
-    height: 190px;
+    height: 265px;
     display: block;
   }
 `;
@@ -166,7 +176,7 @@ const MobileNavLinkContainer = styled.div`
     animation-fill-mode: forwards;
     animation-play-state: running;
   }
-  button {
+  span {
     display: block;
     cursor: pointer;
     :hover {
@@ -176,14 +186,6 @@ const MobileNavLinkContainer = styled.div`
 `;
 
 const LinkBlock = styled(NavLink)`
-  display: block;
-  cursor: pointer;
-  :hover {
-    background: yellow;
-  }
-`;
-
-const MobileNavButton = styled.button`
   display: block;
   cursor: pointer;
   :hover {
@@ -296,7 +298,6 @@ export {
   MobileNavContainer,
   MobileHeaderText,
   MobileNavLinkContainer,
-  MobileNavButton,
   LanguageButtonContainer,
   LinkBlock,
   ReverseLinkBlock,

@@ -41,10 +41,10 @@ const MobileNavBar = ({ isItOpen, firstRender }) => {
             <LinkBlock to="/photos">{t('nav.photos')}</LinkBlock>
           </ul>
           <ul>
-            <button onClick={() => changeLanguage('fi')}>fi</button>
+            <span onClick={() => changeLanguage('fi')}>fi</span>
           </ul>
           <ul>
-            <button onClick={() => changeLanguage('en')}>en</button>
+            <span onClick={() => changeLanguage('en')}>en</span>
           </ul>
         </li>
       </MobileNavLinkContainer>
@@ -70,10 +70,10 @@ const MobileNavBar = ({ isItOpen, firstRender }) => {
             <ReverseLinkBlock to="/photos">{t('nav.photos')}</ReverseLinkBlock>
           </ul>
           <ul>
-            <button onClick={() => changeLanguage('fi')}>fi</button>
+            <span onClick={() => changeLanguage('fi')}>fi</span>
           </ul>
           <ul>
-            <button onClick={() => changeLanguage('en')}>en</button>
+            <span onClick={() => changeLanguage('en')}>en</span>
           </ul>
         </li>
       </ReverseContainer>
