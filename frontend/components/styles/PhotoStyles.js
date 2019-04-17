@@ -50,6 +50,12 @@ const ProfileDate = styled.span`
   font-size: 14px;
 `;
 
+const SpinnerStyle = styled.div`
+  position: absolute;
+  left: 48%;
+  top: 37%;
+`;
+
 export {
   PhotoCard,
   StyledText,
@@ -57,5 +63,6 @@ export {
   ProfileContainer,
   ProfilePicture,
   ProfileName,
-  ProfileDate
+  ProfileDate,
+  SpinnerStyle
 };

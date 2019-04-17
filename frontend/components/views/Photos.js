@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import Masonry from 'react-masonry-component';
 import moment from 'moment';
+import Spinner from 'react-spinkit';
+import Content from '../Content';
 import photoService from '../../services/photos';
 import {
   PhotoCard,
@@ -9,7 +11,8 @@ import {
   ProfileContainer,
   ProfilePicture,
   ProfileName,
-  ProfileDate
+  ProfileDate,
+  SpinnerStyle
 } from '../styles/PhotoStyles';
 
 const FormatDateToNow = createdTime => {
@@ -59,7 +62,11 @@ const Photos = () => {
   if (photos) {
     return <Masonry className="masonry">{photoCards(photos)}</Masonry>;
   } else {
-    return <div>loading...</div>;
+    return (
+      <SpinnerStyle>
+        <Spinner name="folding-cube" color="purple" />
+      </SpinnerStyle>
+    );
   }
 };
 

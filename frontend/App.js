@@ -5,6 +5,7 @@ import styled, { createGlobalStyle } from 'styled-components';
 import routes from './components/routes';
 import FancyRoute from './components/FancyRoute';
 import Nav from './components/Nav';
+import Content from './components/Content';
 
 // import { anecdoteInitialization } from './actionCreators';
 
@@ -45,10 +46,6 @@ const GlobalStyle = createGlobalStyle`
 const Loader = () => <div>loading...</div>;
 
 class App extends React.Component {
-  // componentDidMount = async () => {
-  //   this.props.anecdoteInitialization();
-  // };
-
   render() {
     return (
       <div>
@@ -59,7 +56,9 @@ class App extends React.Component {
               <Suspense fallback={<Loader />}>
                 <Nav />
               </Suspense>
-              <Switch>{routes.map((route, i) => <FancyRoute key={i} {...route} />)}</Switch>
+              <Content>
+                <Switch>{routes.map((route, i) => <FancyRoute key={i} {...route} />)}</Switch>
+              </Content>
             </div>
           </Router>
         </Inner>
