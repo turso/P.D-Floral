@@ -25,6 +25,21 @@ const FormatDateToNow = createdTime => {
   }
 };
 
+const photoCards = photos =>
+  photos.map(photo => (
+    <div className="card" key={photo.caption.id}>
+      <PhotoCard>
+        <ProfileContainer>
+          <ProfilePicture src={photo.user.profile_picture} />
+          <ProfileName>{photo.user.username}</ProfileName>
+          <ProfileDate>{FormatDateToNow(photo.created_time)}</ProfileDate>
+        </ProfileContainer>
+        <StyledImg src={photo.images.standard_resolution.url} />
+        <StyledText>{photo.caption.text}</StyledText>
+      </PhotoCard>
+    </div>
+  ));
+
 const Photos = () => {
   let [photos, setPhotos] = useState(null);
 
@@ -42,23 +57,9 @@ const Photos = () => {
   console.log('DATA ON TÄÄLLÄ TÄLLAISTA NYT', photos);
 
   if (photos) {
-    const photoCards = photos.map(photo => (
-      <div className="card" key={photo.caption.id}>
-        <PhotoCard>
-          <ProfileContainer>
-            <ProfilePicture src={photo.user.profile_picture} />
-            <ProfileName>{photo.user.username}</ProfileName>
-            <ProfileDate>{FormatDateToNow(photo.created_time)}</ProfileDate>
-          </ProfileContainer>
-          <StyledImg src={photo.images.standard_resolution.url} />
-          <StyledText>{photo.caption.text}</StyledText>
-        </PhotoCard>
-      </div>
-    ));
-
-    return <Masonry className="masonry">{photoCards}</Masonry>;
+    return <Masonry className="masonry">{photoCards(photos)}</Masonry>;
   } else {
-    return <div />;
+    return <div>loading...</div>;
   }
 };
 
