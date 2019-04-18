@@ -53,7 +53,18 @@ const ProfileDate = styled.span`
 const SpinnerStyle = styled.div`
   position: absolute;
   left: 48%;
-  top: 37%;
+  @media only screen and (min-width: 320px) {
+    top: 65%;
+  }
+  @media only screen and (min-width: 375px) {
+    top: 55%;
+  }
+  @media only screen and (min-width: 600px) {
+    top: 45%;
+  }
+  @media only screen and (min-width: 1024px) {
+    top: 30%;
+  }
 `;
 
 export {
