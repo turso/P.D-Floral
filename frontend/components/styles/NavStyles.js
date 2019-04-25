@@ -288,9 +288,11 @@ const NavLinkContainer = styled.div`
 `;
 
 const NavContainer = styled.div`
-  padding-bottom: 6rem;
   @media only screen and (max-width: 705px) {
     padding-bottom: 1rem;
+  }
+  @media only screen and (min-width: 705px) {
+    padding-top: 1rem;
   }
 `;
 

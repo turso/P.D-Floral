@@ -43,7 +43,7 @@ const photoCards = photos =>
     </div>
   ));
 
-const Photos = () => {
+export default function Photos() {
   let [photos, setPhotos] = useState(null);
 
   useEffect(() => {
@@ -70,4 +70,3 @@ const Photos = () => {
   }
 };
 
-export default Photos;

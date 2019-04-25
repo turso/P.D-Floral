@@ -83,7 +83,7 @@ const MobileNavBar = ({ isItOpen, firstRender }) => {
   return <div />;
 };
 
-const Nav = () => {
+export default function Nav() {
   let [open, setOpen] = useState(false);
   let [firstRender, setFirstRender] = useState(true);
 
@@ -127,4 +127,3 @@ const Nav = () => {
   );
 };
 
-export default Nav;
