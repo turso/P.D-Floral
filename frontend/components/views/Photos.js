@@ -23,9 +23,8 @@ const FormatDateToNow = createdTime => {
 
   if (months >= 2) {
     return Math.round(months) + ' Mo';
-  } else {
-    return formattedTime + ' Days';
   }
+  return formattedTime + ' Days';
 };
 
 const photoCards = photos =>
@@ -68,5 +67,4 @@ export default function Photos() {
       </SpinnerStyle>
     );
   }
-};
-
+}

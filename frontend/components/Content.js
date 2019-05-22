@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 const StyledContent = styled.div`
   color: red;
-  @media only screen and (min-width: 1024px) {
+  @media only screen and (min-width: 705px) {
     padding: 7rem 0rem;
   }
 `;
