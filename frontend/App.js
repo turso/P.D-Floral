@@ -1,13 +1,10 @@
 import React, { Suspense } from 'react';
 import { BrowserRouter as Router, Switch } from 'react-router-dom';
-import { connect } from 'react-redux';
 import styled, { createGlobalStyle } from 'styled-components';
 import routes from './components/routes';
 import FancyRoute from './components/FancyRoute';
 import Nav from './components/Nav';
 import Content from './components/Content';
-
-// import { anecdoteInitialization } from './actionCreators';
 
 const Inner = styled.div`
   max-width: 1440px;
@@ -67,4 +64,4 @@ class App extends React.Component {
   }
 }
 
-export default connect(null)(App);
+export default App;

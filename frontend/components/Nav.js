@@ -15,7 +15,7 @@ import {
 } from './styles/NavStyles';
 import MenuIcon from './icons/menu';
 
-const MobileNavBar = ({ isItOpen, firstRender }) => {
+const MobileNavBar = ({ isItOpen, firstRender, handler }) => {
   const { t, i18n } = useTranslation();
 
   const changeLanguage = lng => {
@@ -121,9 +121,8 @@ export default function Nav() {
           <MenuIcon animation="x-cross" handler={() => handleClick()} />
         </div>
 
-        <MobileNavBar isItOpen={open} firstRender={firstRender} />
+        <MobileNavBar isItOpen={open} firstRender={firstRender} handler={() => handleClick()} />
       </MobileNavContainer>
     </NavContainer>
   );
-};
-
+}

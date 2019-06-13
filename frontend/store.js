@@ -1,12 +1,11 @@
-import { createStore, combineReducers, applyMiddleware } from 'redux';
-import thunk from 'redux-thunk';
-import logger from 'redux-logger';
-import instagramReducer from './reducers/instagramReducer';
+import React from 'react';
 
-const reducer = combineReducers({
-  instagram: instagramReducer
-});
+export const Store = React.createContext();
 
-const store = createStore(reducer, applyMiddleware(thunk, logger));
+const initialState = {};
 
-export default store;
+function reducer() {}
+
+export function StoreProvider(props) {
+  return <Store.Provider value="data from store">{props.children}</Store.Provider>;
+}
