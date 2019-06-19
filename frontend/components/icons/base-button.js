@@ -1,4 +1,5 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import styled from 'styled-components';
 
 const MobileButton = styled.button`
@@ -10,26 +11,15 @@ const MobileButton = styled.button`
 class BaseIcon extends React.Component {
   constructor(props) {
     super(props);
-
-    const isActive = props.isActive ? props.isActive : false;
-    this.handleClick = this.handleClick.bind(this);
-
-    this.state = {
-      active: isActive
-    };
-  }
-
-  handleClick(event) {
-    this.setState(prevState => ({
-      active: !prevState.active
-    }));
   }
 
   render() {
+    const { Nav } = this.props;
+
     const animation = this.props.animations[
       this.props.animation ? this.props.animation : this.props.defaultAnimation
     ];
-    const transform = this.state.active ? 'tcon-transform' : '';
+    const transform = Nav.navOpen ? 'tcon-transform' : '';
     const animationClass = animation.map(s => `${s}`).join(' ');
     const buttonClass = ['tcon', animationClass, `${transform}`].join(' ');
 
@@ -38,7 +28,6 @@ class BaseIcon extends React.Component {
         aria-label={this.props.ariaLabel}
         className={buttonClass}
         onClick={() => {
-          this.handleClick();
           this.props.handler();
         }}
       >
@@ -48,4 +37,10 @@ class BaseIcon extends React.Component {
   }
 }
 
-export default BaseIcon;
+const mapStateToProps = state => {
+  return {
+    Nav: state.Nav
+  };
+};
+
+export default connect(mapStateToProps, null)(BaseIcon);

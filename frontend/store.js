@@ -1,11 +1,11 @@
-import React from 'react';
+import { applyMiddleware, combineReducers, createStore } from 'redux';
+import logger from 'redux-logger';
+import navReducer from './reducers/navReducer';
 
-export const Store = React.createContext();
+const reducer = combineReducers({
+  Nav: navReducer
+});
 
-const initialState = {};
+const store = createStore(reducer, applyMiddleware(logger));
 
-function reducer() {}
-
-export function StoreProvider(props) {
-  return <Store.Provider value="data from store">{props.children}</Store.Provider>;
-}
+export default store;

@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
+import { connect } from 'react-redux';
+import { toggleNav, closeNav } from '../actions/navActions';
 import {
   MobileNavContainer,
   MobileHeaderText,
@@ -15,30 +17,42 @@ import {
 } from './styles/NavStyles';
 import MenuIcon from './icons/menu';
 
-const MobileNavBar = ({ isItOpen, firstRender, handler }) => {
+const MobileNavBar = ({ firstRender, closeNav, Nav }) => {
   const { t, i18n } = useTranslation();
 
   const changeLanguage = lng => {
     i18n.changeLanguage(lng);
   };
 
-  if (isItOpen) {
+  const closeMobileNav = time => {
+    setTimeout(() => {
+      closeNav();
+    }, time * 400);
+  };
+
+  if (Nav.navOpen) {
     return (
       <MobileNavLinkContainer>
         <li>
           <ul>
-            <LinkBlock exact to="/">
+            <LinkBlock exact to="/" onClick={() => closeMobileNav(1)}>
               {t('nav.home')}
             </LinkBlock>
           </ul>
           <ul>
-            <LinkBlock to="/about">{t('nav.about')}</LinkBlock>
+            <LinkBlock to="/about" onClick={() => closeMobileNav(1)}>
+              {t('nav.about')}
+            </LinkBlock>
           </ul>
           <ul>
-            <LinkBlock to="/contact">{t('nav.contact')}</LinkBlock>
+            <LinkBlock to="/contact" onClick={() => closeMobileNav(1)}>
+              {t('nav.contact')}
+            </LinkBlock>
           </ul>
           <ul>
-            <LinkBlock to="/photos">{t('nav.photos')}</LinkBlock>
+            <LinkBlock to="/photos" onClick={() => closeMobileNav(1)}>
+              {t('nav.photos')}
+            </LinkBlock>
           </ul>
           <ul>
             <span onClick={() => changeLanguage('fi')}>fi</span>
@@ -51,7 +65,7 @@ const MobileNavBar = ({ isItOpen, firstRender, handler }) => {
     );
   }
 
-  if (!isItOpen && !firstRender) {
+  if (!Nav.navOpen && !firstRender) {
     return (
       <ReverseContainer>
         <li>
@@ -83,12 +97,11 @@ const MobileNavBar = ({ isItOpen, firstRender, handler }) => {
   return <div />;
 };
 
-export default function Nav() {
-  let [open, setOpen] = useState(false);
+const Nav = ({ toggleNav, Nav, closeNav }) => {
   let [firstRender, setFirstRender] = useState(true);
 
   function handleClick() {
-    setOpen(!open);
+    toggleNav();
     setFirstRender(false);
   }
 
@@ -121,8 +134,23 @@ export default function Nav() {
           <MenuIcon animation="x-cross" handler={() => handleClick()} />
         </div>
 
-        <MobileNavBar isItOpen={open} firstRender={firstRender} handler={() => handleClick()} />
+        <MobileNavBar firstRender={firstRender} closeNav={closeNav} Nav={Nav} />
       </MobileNavContainer>
     </NavContainer>
   );
-}
+};
+
+const mapStateToProps = state => {
+  return {
+    Nav: state.Nav
+  };
+};
+
+const mapDispatchToProps = dispatch => {
+  return {
+    toggleNav: () => dispatch(toggleNav()),
+    closeNav: () => dispatch(closeNav())
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Nav);

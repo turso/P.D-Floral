@@ -42,26 +42,22 @@ const GlobalStyle = createGlobalStyle`
 
 const Loader = () => <div>loading...</div>;
 
-class App extends React.Component {
-  render() {
-    return (
-      <div>
-        <Inner>
-          <GlobalStyle />
-          <Router>
-            <div>
-              <Suspense fallback={<Loader />}>
-                <Nav />
-              </Suspense>
-              <Content>
-                <Switch>{routes.map((route, i) => <FancyRoute key={i} {...route} />)}</Switch>
-              </Content>
-            </div>
-          </Router>
-        </Inner>
-      </div>
-    );
-  }
+export default function App() {
+  return (
+    <div>
+      <Inner>
+        <GlobalStyle />
+        <Router>
+          <div>
+            <Suspense fallback={<Loader />}>
+              <Nav />
+            </Suspense>
+            <Content>
+              <Switch>{routes.map((route, i) => <FancyRoute key={i} {...route} />)}</Switch>
+            </Content>
+          </div>
+        </Router>
+      </Inner>
+    </div>
+  );
 }
-
-export default App;
