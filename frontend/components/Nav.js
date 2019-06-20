@@ -24,11 +24,13 @@ const MobileNavBar = ({ firstRender, closeNav, Nav }) => {
     i18n.changeLanguage(lng);
   };
 
-  const closeMobileNav = () => {
+  const closeMobileNav = time => {
     setTimeout(() => {
       closeNav();
     }, 400);
   };
+
+  console.log('I18on', i18n);
 
   if (Nav.navOpen) {
     return (
@@ -54,12 +56,16 @@ const MobileNavBar = ({ firstRender, closeNav, Nav }) => {
               {t('nav.photos')}
             </LinkBlock>
           </ul>
-          <ul>
-            <span onClick={() => changeLanguage('fi')}>fi</span>
-          </ul>
-          <ul>
-            <span onClick={() => changeLanguage('en')}>en</span>
-          </ul>
+          {i18n.language === 'en' && (
+            <ul>
+              <span onClick={() => changeLanguage('fi')}>{t('lang')}</span>
+            </ul>
+          )}
+          {i18n.language === 'fi' && (
+            <ul>
+              <span onClick={() => changeLanguage('en')}>{t('lang')}</span>
+            </ul>
+          )}
         </li>
       </MobileNavLinkContainer>
     );
@@ -84,10 +90,10 @@ const MobileNavBar = ({ firstRender, closeNav, Nav }) => {
             <ReverseLinkBlock to="/photos">{t('nav.photos')}</ReverseLinkBlock>
           </ul>
           <ul>
-            <span onClick={() => changeLanguage('fi')}>fi</span>
+            <span onClick={() => changeLanguage('fi')}>{t('lang')}</span>
           </ul>
           <ul>
-            <span onClick={() => changeLanguage('en')}>en</span>
+            <span onClick={() => changeLanguage('en')}>{t('lang')}</span>
           </ul>
         </li>
       </ReverseContainer>
@@ -124,8 +130,12 @@ const Nav = ({ toggleNav, Nav, closeNav }) => {
         </NavStyles>
       </NavLinkContainer>
       <LanguageButtonContainer>
-        <button onClick={() => changeLanguage('fi')}>fi</button>
-        <button onClick={() => changeLanguage('en')}>en</button>
+        {i18n.language === 'en' && (
+          <button onClick={() => changeLanguage('fi')}>{t('lang')}</button>
+        )}
+        {i18n.language === 'fi' && (
+          <button onClick={() => changeLanguage('en')}>{t('lang')}</button>
+        )}
       </LanguageButtonContainer>
 
       <MobileNavContainer>

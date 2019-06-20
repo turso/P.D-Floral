@@ -20,7 +20,7 @@ const toggleLinkKeyframes = keyframes`
 
 const toggleReverseKeyFrames = keyframes`
     0% {
-    height: 265px;
+    height: 225px;
     display: block;
     z-index: 99;
   }
@@ -111,7 +111,7 @@ const toggleNavContainerKeyframes = keyframes`
     display: none;
   }
   100% {
-    height: 265px;
+    height: 225px;
     display: block;
   }
 `;
@@ -205,7 +205,10 @@ const NavStyles = styled.ul`
   font-size: 2rem;
   a,
   button {
-    padding: 1rem 3rem;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    padding-left: 2rem;
+    padding-right: 2rem;
     display: flex;
     align-items: center;
     position: relative;
@@ -249,7 +252,9 @@ const LanguageButtonContainer = styled.div`
   display: flex;
   float: right;
   button {
-    padding: 1rem 3rem;
+    padding-top: 1.7rem;
+    padding-right: 2rem;
+    padding-left: 2rem;
     display: flex;
     align-items: center;
     position: relative;
