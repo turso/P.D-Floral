@@ -24,10 +24,10 @@ const MobileNavBar = ({ firstRender, closeNav, Nav }) => {
     i18n.changeLanguage(lng);
   };
 
-  const closeMobileNav = time => {
+  const closeMobileNav = () => {
     setTimeout(() => {
       closeNav();
-    }, time * 400);
+    }, 400);
   };
 
   if (Nav.navOpen) {
@@ -35,22 +35,22 @@ const MobileNavBar = ({ firstRender, closeNav, Nav }) => {
       <MobileNavLinkContainer>
         <li>
           <ul>
-            <LinkBlock exact to="/" onClick={() => closeMobileNav(1)}>
+            <LinkBlock exact to="/" onClick={() => closeMobileNav()}>
               {t('nav.home')}
             </LinkBlock>
           </ul>
           <ul>
-            <LinkBlock to="/about" onClick={() => closeMobileNav(1)}>
+            <LinkBlock to="/about" onClick={() => closeMobileNav()}>
               {t('nav.about')}
             </LinkBlock>
           </ul>
           <ul>
-            <LinkBlock to="/contact" onClick={() => closeMobileNav(1)}>
+            <LinkBlock to="/contact" onClick={() => closeMobileNav()}>
               {t('nav.contact')}
             </LinkBlock>
           </ul>
           <ul>
-            <LinkBlock to="/photos" onClick={() => closeMobileNav(1)}>
+            <LinkBlock to="/photos" onClick={() => closeMobileNav()}>
               {t('nav.photos')}
             </LinkBlock>
           </ul>
