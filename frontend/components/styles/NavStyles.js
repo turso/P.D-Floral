@@ -193,6 +193,14 @@ const LinkBlock = styled(NavLink)`
   }
 `;
 
+const LanguageBlock = styled.ul`
+  display: block;
+  cursor: pointer;
+  :hover {
+    background: yellow;
+  }
+`;
+
 const NavStyles = styled.ul`
   @media only screen and (max-width: 705px) {
     display: none;
@@ -220,7 +228,7 @@ const NavStyles = styled.ul`
     cursor: pointer;
     &:after {
       height: 2px;
-      background: red;
+      background: #ebcbcb;
       content: '';
       width: 0;
       position: absolute;
@@ -267,7 +275,7 @@ const LanguageButtonContainer = styled.div`
     cursor: pointer;
     &:after {
       height: 2px;
-      background: red;
+      background: #ebcbcb;
       content: '';
       width: 0;
       position: absolute;
@@ -306,6 +314,7 @@ export {
   MobileHeaderText,
   MobileNavLinkContainer,
   LanguageButtonContainer,
+  LanguageBlock,
   LinkBlock,
   ReverseLinkBlock,
   NavContainer,

@@ -8,6 +8,7 @@ import {
   MobileHeaderText,
   MobileNavLinkContainer,
   LanguageButtonContainer,
+  LanguageBlock,
   LinkBlock,
   ReverseLinkBlock,
   NavContainer,
@@ -24,13 +25,11 @@ const MobileNavBar = ({ firstRender, closeNav, Nav }) => {
     i18n.changeLanguage(lng);
   };
 
-  const closeMobileNav = time => {
+  const closeMobileNav = () => {
     setTimeout(() => {
       closeNav();
     }, 400);
   };
-
-  console.log('I18on', i18n);
 
   if (Nav.navOpen) {
     return (
@@ -57,14 +56,14 @@ const MobileNavBar = ({ firstRender, closeNav, Nav }) => {
             </LinkBlock>
           </ul>
           {i18n.language === 'en' && (
-            <ul>
+            <LanguageBlock>
               <span onClick={() => changeLanguage('fi')}>{t('lang')}</span>
-            </ul>
+            </LanguageBlock>
           )}
           {i18n.language === 'fi' && (
-            <ul>
+            <LanguageBlock>
               <span onClick={() => changeLanguage('en')}>{t('lang')}</span>
-            </ul>
+            </LanguageBlock>
           )}
         </li>
       </MobileNavLinkContainer>

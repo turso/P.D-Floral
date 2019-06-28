@@ -27,7 +27,15 @@ const FormatDateToNow = createdTime => {
   return formattedTime + ' Days';
 };
 
-const photoCards = photos =>
+String.prototype.parseHashtag = function() {
+  return this.replace(/[#]+[A-Za-z0-9-_]+/g, function(t) {
+    var tag = t.replace('#', '');
+
+    return t.link('https://www.instagram.com/explore/tags/' + tag);
+  });
+};
+
+const PhotoCards = photos =>
   photos.map(photo => (
     <div className="card" key={photo.caption.id}>
       <PhotoCard>
@@ -37,7 +45,9 @@ const photoCards = photos =>
           <ProfileDate>{FormatDateToNow(photo.created_time)}</ProfileDate>
         </ProfileContainer>
         <StyledImg src={photo.images.standard_resolution.url} />
-        <StyledText>{photo.caption.text}</StyledText>
+        <StyledText>
+          <div dangerouslySetInnerHTML={{ __html: photo.caption.text.parseHashtag() }} />
+        </StyledText>
       </PhotoCard>
     </div>
   ));
@@ -59,7 +69,7 @@ export default function Photos() {
   console.log('DATA ON TÄÄLLÄ TÄLLAISTA NYT', photos);
 
   if (photos) {
-    return <Masonry className="masonry">{photoCards(photos)}</Masonry>;
+    return <Masonry className="masonry">{PhotoCards(photos)}</Masonry>;
   } else {
     return (
       <SpinnerStyle>
