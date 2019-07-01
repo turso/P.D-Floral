@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import Masonry from 'react-masonry-component';
 import moment from 'moment';
 import Spinner from 'react-spinkit';
-import Content from '../Content';
 import photoService from '../../services/photos';
 import {
   PhotoCard,

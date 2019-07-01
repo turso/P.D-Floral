@@ -16,6 +16,10 @@ const StyledText = styled.div`
   padding: 0.9rem;
   font-weight: 300;
   -webkit-font-smoothing: antialiased;
+  a {
+    color: #548a8a;
+    font-weight: bold;
+  }
 `;
 
 const StyledImg = styled.img`
