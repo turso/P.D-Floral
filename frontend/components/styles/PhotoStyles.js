@@ -17,7 +17,7 @@ const StyledText = styled.div`
   font-weight: 300;
   -webkit-font-smoothing: antialiased;
   a {
-    color: #548a8a;
+    color: #572626;
     font-weight: bold;
   }
 `;

@@ -228,7 +228,7 @@ const NavStyles = styled.ul`
     cursor: pointer;
     &:after {
       height: 2px;
-      background: #ebcbcb;
+      background: #976262;
       content: '';
       width: 0;
       position: absolute;
@@ -260,7 +260,7 @@ const LanguageButtonContainer = styled.div`
   display: flex;
   float: right;
   button {
-    padding-top: 1.7rem;
+    padding-top: 1.3rem;
     padding-right: 2rem;
     padding-left: 2rem;
     display: flex;
@@ -275,7 +275,7 @@ const LanguageButtonContainer = styled.div`
     cursor: pointer;
     &:after {
       height: 2px;
-      background: #ebcbcb;
+      background: #976262;
       content: '';
       width: 0;
       position: absolute;
