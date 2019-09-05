@@ -7,12 +7,14 @@ import Nav from './components/Nav';
 import Content from './components/Content';
 
 const Inner = styled.div`
+  @import url('https://fonts.googleapis.com/css?family=Raleway');
+  font-family: 'Raleway', sans-serif;
   max-width: 1440px;
   margin: 0 auto;
 `;
 
 const GlobalStyle = createGlobalStyle`
-  html {
+  /* html {
     box-sizing: border-box;
     font-size: 62.5%;
     font-weight: 900;
@@ -37,7 +39,7 @@ const GlobalStyle = createGlobalStyle`
   a {
     text-decoration: none;
     color: black;
-  }
+  } */
 `;
 
 const Loader = () => <div>loading...</div>;

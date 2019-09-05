@@ -3,7 +3,7 @@ import { Route } from 'react-router-dom';
 import nprogress from 'nprogress';
 
 class FancyRoute extends React.Component {
-  componentWillMount() {
+  UNSAFE_componentWillMount() {
     nprogress.start();
   }
 
