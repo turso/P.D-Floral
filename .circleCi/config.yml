@@ -10,10 +10,10 @@ jobs:
     steps:
       - checkout
       - run: npm install
-      - run: npm run build
+      - run: npm start
       - aws-s3/sync:
           from: dist
-          to: 's3://demo-ci-cd-article/'
+          to: 's3://oliver-pd-test/'
           arguments: |
             --acl public-read \
             --cache-control "max-age=86400" \
