@@ -8,23 +8,23 @@ const routes = [
     title: 'Home',
     path: '/',
     exact: true,
-    component: Home
+    component: Home,
   },
   {
     title: 'Contact',
     path: '/contact',
-    component: Contact
+    component: Contact,
   },
   {
     title: 'About',
     path: '/about',
-    component: About
+    component: About,
   },
   {
     title: 'Photos',
     path: '/photos',
-    component: Photos
-  }
+    component: Photos,
+  },
 ];
 
 export default routes;

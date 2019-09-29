@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
-
-const styles = {
-  paddingTop: '25rem'
-};
+import { Img, HomeContainer } from '../styles/HomeStyles';
 
 export default class Home extends Component {
   render() {
-    return <div style={styles}>Home</div>;
+    return (
+      <HomeContainer>
+        <Img>Home</Img>
+      </HomeContainer>
+    );
   }
 }

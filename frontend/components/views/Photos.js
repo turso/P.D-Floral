@@ -1,3 +1,5 @@
+/* eslint-disable no-extend-native */
+/* eslint-disable react/no-danger */
 import React, { useState, useEffect } from 'react';
 import Masonry from 'react-masonry-component';
 import moment from 'moment';
@@ -11,7 +13,7 @@ import {
   ProfilePicture,
   ProfileName,
   ProfileDate,
-  SpinnerStyle
+  SpinnerStyle,
 } from '../styles/PhotoStyles';
 
 const FormatDateToNow = createdTime => {
@@ -21,16 +23,16 @@ const FormatDateToNow = createdTime => {
   const months = formattedTime / 30;
 
   if (months >= 2) {
-    return Math.round(months) + ' Mo';
+    return `${Math.round(months)} Mo`;
   }
-  return formattedTime + ' Days';
+  return `${formattedTime} Days`;
 };
 
 String.prototype.parseHashtag = function() {
   return this.replace(/[#]+[A-Za-z0-9-_]+/g, function(t) {
-    var tag = t.replace('#', '');
+    const tag = t.replace('#', '');
 
-    return t.link('https://www.instagram.com/explore/tags/' + tag);
+    return t.link(`https://www.instagram.com/explore/tags/${tag}`);
   });
 };
 
@@ -45,14 +47,18 @@ const PhotoCards = photos =>
         </ProfileContainer>
         <StyledImg src={photo.images.standard_resolution.url} />
         <StyledText>
-          <div dangerouslySetInnerHTML={{ __html: photo.caption.text.parseHashtag() }} />
+          <div
+            dangerouslySetInnerHTML={{
+              __html: photo.caption.text.parseHashtag(),
+            }}
+          />
         </StyledText>
       </PhotoCard>
     </div>
   ));
 
 export default function Photos() {
-  let [photos, setPhotos] = useState(null);
+  const [photos, setPhotos] = useState(null);
 
   useEffect(() => {
     let isMounted = true;
@@ -69,11 +75,10 @@ export default function Photos() {
 
   if (photos) {
     return <Masonry className="masonry">{PhotoCards(photos)}</Masonry>;
-  } else {
-    return (
-      <SpinnerStyle>
-        <Spinner name="folding-cube" color="purple" />
-      </SpinnerStyle>
-    );
   }
+  return (
+    <SpinnerStyle>
+      <Spinner name="folding-cube" color="purple" />
+    </SpinnerStyle>
+  );
 }

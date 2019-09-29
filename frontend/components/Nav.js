@@ -1,3 +1,5 @@
+/* eslint-disable jsx-a11y/no-static-element-interactions */
+/* eslint-disable react/prop-types */
 import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
@@ -14,7 +16,7 @@ import {
   NavContainer,
   NavLinkContainer,
   NavStyles,
-  ReverseContainer
+  ReverseContainer,
 } from './styles/NavStyles';
 import MenuIcon from './icons/menu';
 
@@ -57,12 +59,22 @@ const MobileNavBar = ({ firstRender, closeNav, Nav }) => {
           </ul>
           {i18n.language === 'en' && (
             <LanguageBlock>
-              <span onClick={() => changeLanguage('fi')}>{t('lang')}</span>
+              <span
+                onClick={() => changeLanguage('fi')}
+                onKeyPress={() => changeLanguage('fi')}
+              >
+                {t('lang')}
+              </span>
             </LanguageBlock>
           )}
           {i18n.language === 'fi' && (
             <LanguageBlock>
-              <span onClick={() => changeLanguage('en')}>{t('lang')}</span>
+              <span
+                onClick={() => changeLanguage('en')}
+                onKeyPress={() => changeLanguage('fi')}
+              >
+                {t('lang')}
+              </span>
             </LanguageBlock>
           )}
         </li>
@@ -83,16 +95,28 @@ const MobileNavBar = ({ firstRender, closeNav, Nav }) => {
             <ReverseLinkBlock to="/about">{t('nav.about')}</ReverseLinkBlock>
           </ul>
           <ul>
-            <ReverseLinkBlock to="/contact">{t('nav.contact')}</ReverseLinkBlock>
+            <ReverseLinkBlock to="/contact">
+              {t('nav.contact')}
+            </ReverseLinkBlock>
           </ul>
           <ul>
             <ReverseLinkBlock to="/photos">{t('nav.photos')}</ReverseLinkBlock>
           </ul>
           <ul>
-            <span onClick={() => changeLanguage('fi')}>{t('lang')}</span>
+            <span
+              onClick={() => changeLanguage('fi')}
+              onKeyPress={() => changeLanguage('fi')}
+            >
+              {t('lang')}
+            </span>
           </ul>
           <ul>
-            <span onClick={() => changeLanguage('en')}>{t('lang')}</span>
+            <span
+              onClick={() => changeLanguage('en')}
+              onKeyPress={() => changeLanguage('fi')}
+            >
+              {t('lang')}
+            </span>
           </ul>
         </li>
       </ReverseContainer>
@@ -103,7 +127,7 @@ const MobileNavBar = ({ firstRender, closeNav, Nav }) => {
 };
 
 const Nav = ({ toggleNav, Nav, closeNav }) => {
-  let [firstRender, setFirstRender] = useState(true);
+  const [firstRender, setFirstRender] = useState(true);
 
   function handleClick() {
     toggleNav();
@@ -130,10 +154,14 @@ const Nav = ({ toggleNav, Nav, closeNav }) => {
       </NavLinkContainer>
       <LanguageButtonContainer>
         {i18n.language === 'en' && (
-          <button onClick={() => changeLanguage('fi')}>{t('lang')}</button>
+          <button type="button" onClick={() => changeLanguage('fi')}>
+            {t('lang')}
+          </button>
         )}
         {i18n.language === 'fi' && (
-          <button onClick={() => changeLanguage('en')}>{t('lang')}</button>
+          <button type="button" onClick={() => changeLanguage('en')}>
+            {t('lang')}
+          </button>
         )}
       </LanguageButtonContainer>
 
@@ -149,17 +177,16 @@ const Nav = ({ toggleNav, Nav, closeNav }) => {
   );
 };
 
-const mapStateToProps = state => {
-  return {
-    Nav: state.Nav
-  };
-};
+const mapStateToProps = state => ({
+  Nav: state.Nav,
+});
 
-const mapDispatchToProps = dispatch => {
-  return {
-    toggleNav: () => dispatch(toggleNav()),
-    closeNav: () => dispatch(closeNav())
-  };
-};
+const mapDispatchToProps = dispatch => ({
+  toggleNav: () => dispatch(toggleNav()),
+  closeNav: () => dispatch(closeNav()),
+});
 
-export default connect(mapStateToProps, mapDispatchToProps)(Nav);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Nav);

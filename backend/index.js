@@ -1,9 +1,11 @@
 const http = require('http');
 const express = require('express');
+
 const app = express();
 const bodyParser = require('body-parser');
 const morgan = require('morgan');
 const cors = require('cors');
+const path = require('path');
 const config = require('./utils/config');
 const photoRouter = require('./routes/photoRoutes');
 
@@ -31,7 +33,6 @@ app.use('/api/photos', photoRouter);
 // Express will serve up the index.html file
 // if it doesn't recognize the route. Example page refresh!
 
-const path = require('path');
 app.get('/*', function(req, res) {
   res.sendFile(path.join(__dirname, '../dist/index.html'), function(err) {
     if (err) {
@@ -52,5 +53,5 @@ server.listen(config.port, () => {
 
 module.exports = {
   app,
-  server
+  server,
 };

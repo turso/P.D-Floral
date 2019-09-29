@@ -9,8 +9,10 @@ import Content from './components/Content';
 const Inner = styled.div`
   @import url('https://fonts.googleapis.com/css?family=Raleway');
   font-family: 'Raleway', sans-serif;
-  max-width: 1440px;
+  /* max-width: 1440px; */
   margin: 0 auto;
+  background-color: black;
+  color: white;
 `;
 
 const GlobalStyle = createGlobalStyle`
@@ -51,11 +53,15 @@ export default function App() {
         <GlobalStyle />
         <Router>
           <div>
-            <Suspense fallback={<Loader />}>
-              <Nav />
-            </Suspense>
             <Content>
-              <Switch>{routes.map((route, i) => <FancyRoute key={i} {...route} />)}</Switch>
+              <Suspense fallback={<Loader />}>
+                <Nav />
+              </Suspense>
+              <Switch>
+                {routes.map((route, i) => (
+                  <FancyRoute key={i} {...route} />
+                ))}
+              </Switch>
             </Content>
           </div>
         </Router>

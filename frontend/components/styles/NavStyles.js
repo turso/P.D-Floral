@@ -186,6 +186,7 @@ const MobileNavLinkContainer = styled.div`
 `;
 
 const LinkBlock = styled(NavLink)`
+  color: white;
   display: block;
   cursor: pointer;
   :hover {
@@ -194,6 +195,7 @@ const LinkBlock = styled(NavLink)`
 `;
 
 const LanguageBlock = styled.ul`
+  color: white;
   display: block;
   cursor: pointer;
   :hover {
@@ -213,6 +215,7 @@ const NavStyles = styled.ul`
   font-size: 2rem;
   a,
   button {
+    color: white;
     padding-top: 1rem;
     padding-bottom: 1rem;
     padding-left: 2rem;
@@ -260,6 +263,7 @@ const LanguageButtonContainer = styled.div`
   display: flex;
   float: right;
   button {
+    color: white;
     padding-top: 1.3rem;
     padding-right: 2rem;
     padding-left: 2rem;
@@ -320,5 +324,5 @@ export {
   NavContainer,
   NavLinkContainer,
   NavStyles,
-  ReverseContainer
+  ReverseContainer,
 };
