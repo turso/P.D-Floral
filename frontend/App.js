@@ -5,14 +5,22 @@ import routes from './components/routes';
 import FancyRoute from './components/FancyRoute';
 import Nav from './components/Nav';
 import Content from './components/Content';
+import img from './static/PD_kukat0184.JPG';
 
 const Inner = styled.div`
   @import url('https://fonts.googleapis.com/css?family=Raleway');
   font-family: 'Raleway', sans-serif;
   /* max-width: 1440px; */
   margin: 0 auto;
-  background-color: black;
+  background-color: #0b0c11;
   color: white;
+
+  background: url(${img}) no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  height: 100%;
 `;
 
 const GlobalStyle = createGlobalStyle`

@@ -12,12 +12,12 @@ const Img = styled.div`
   background-size: contain;
   background-position: center; */
 
-  background: url(${img}) no-repeat center center fixed;
+  /* background: url(${img}) no-repeat center center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
-  height: 100%;
+  height: 100%; */
 `;
 
 export { Img, HomeContainer };
