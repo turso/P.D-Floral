@@ -12,15 +12,15 @@ const Inner = styled.div`
   font-family: 'Raleway', sans-serif;
   /* max-width: 1440px; */
   margin: 0 auto;
-  background-color: #0b0c11;
-  color: white;
+  /* background-color: #0b0c11;
+  color: white; */
 
-  background: url(${img}) no-repeat center center fixed;
+  /* background: url(${img}) no-repeat center center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
-  height: 100%;
+  height: 100%; */
 `;
 
 const GlobalStyle = createGlobalStyle`
