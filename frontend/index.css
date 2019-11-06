@@ -1,24 +1,23 @@
 html {
-  box-sizing: border-box;
-  font-size: 62.5%;
-  font-weight: 900;
+    box-sizing: border-box;
+    font-size: 62.5%;
+    font-weight: 900;
 }
 *,
 *::after,
 *::before {
-  margin: 0;
-  padding: 0;
-  box-sizing: inherit;
+    margin: 0;
+    padding: 0;
+    box-sizing: inherit;
 }
 body {
-  padding: 0;
-  margin: 0;
-  line-height: 2;
+    padding: 0;
+    margin: 0;
+    line-height: 2;
 }
 h1 {
-  font-weight: 900 !important;
+    font-weight: 900 !important;
 }
 a {
-  text-decoration: none;
-  color: black;
+    text-decoration: none;
 }

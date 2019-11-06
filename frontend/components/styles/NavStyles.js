@@ -47,7 +47,7 @@ const ReverseContainer = styled.div`
     z-index: 99;
     text-align: center;
     font-size: 22px;
-    overflow-x: visible;
+    overflow-x: visi§e;
     list-style: none;
     animation-name: ${toggleReverseKeyFrames};
     animation-duration: 0.6s;
@@ -141,19 +141,21 @@ const MobileNavContainer = styled.div`
   }
 `;
 
-const MobileHeaderText = styled.a`
-  font-size: 22px;
-  float: left;
+const MobileHeaderImg = styled.img`
+  border-style: none;
+    height: 11rem;
+    position: absolute;
+    left: -3.5rem;
+    top: -2.1rem;
 `;
 
 const MobileNavLinkContainer = styled.div`
   li {
+    margin-top: 1.5rem;
     z-index: 99;
     text-align: center;
     font-size: 22px;
     overflow-x: visible;
-    border-bottom: 1px solid #ccc;
-    border-top: 1px solid #ccc;
     list-style: none;
     animation-name: ${toggleNavContainerKeyframes};
     animation-duration: 0.6s;
@@ -180,7 +182,7 @@ const MobileNavLinkContainer = styled.div`
     display: block;
     cursor: pointer;
     :hover {
-      background: yellow;
+      background: #EBCBD0;
     }
   }
 `;
@@ -190,7 +192,7 @@ const LinkBlock = styled(NavLink)`
   display: block;
   cursor: pointer;
   :hover {
-    background: yellow;
+    background: #EBCBD0;
   }
 `;
 
@@ -199,7 +201,7 @@ const LanguageBlock = styled.ul`
   display: block;
   cursor: pointer;
   :hover {
-    background: yellow;
+    background: #EBCBD0;
   }
 `;
 
@@ -231,7 +233,7 @@ const NavStyles = styled.ul`
     cursor: pointer;
     &:after {
       height: 2px;
-      background: #976262;
+      background: #EBCBD0;
       content: '';
       width: 0;
       position: absolute;
@@ -279,7 +281,7 @@ const LanguageButtonContainer = styled.div`
     cursor: pointer;
     &:after {
       height: 2px;
-      background: #976262;
+      background: #EBCBD0;
       content: '';
       width: 0;
       position: absolute;
@@ -315,7 +317,7 @@ const NavContainer = styled.div`
 
 export {
   MobileNavContainer,
-  MobileHeaderText,
+  MobileHeaderImg,
   MobileNavLinkContainer,
   LanguageButtonContainer,
   LanguageBlock,

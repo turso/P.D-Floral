@@ -7,7 +7,7 @@ import { connect } from 'react-redux';
 import { toggleNav, closeNav } from '../actions/navActions';
 import {
   MobileNavContainer,
-  MobileHeaderText,
+  MobileHeaderImg,
   MobileNavLinkContainer,
   LanguageButtonContainer,
   LanguageBlock,
@@ -19,6 +19,7 @@ import {
   ReverseContainer,
 } from './styles/NavStyles';
 import MenuIcon from './icons/menu';
+import kuva from '../static/logo.png';
 
 const MobileNavBar = ({ firstRender, closeNav, Nav }) => {
   const { t, i18n } = useTranslation();
@@ -167,7 +168,7 @@ const Nav = ({ toggleNav, Nav, closeNav }) => {
 
       <MobileNavContainer>
         <div>
-          <MobileHeaderText>PD FLORAL</MobileHeaderText>
+          <MobileHeaderImg src={kuva} />
           <MenuIcon animation="x-cross" handler={() => handleClick()} />
         </div>
 

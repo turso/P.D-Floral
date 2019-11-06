@@ -5,7 +5,6 @@ import imgHome from '../static/PD_kukat0184.JPG';
 import imgJoku from '../static/PD_kukat0235.JPG';
 
 const StyledContent = styled.div`
-  color: red;
   display: flex;
   flex-flow: row wrap;
   height: auto;
@@ -26,7 +25,6 @@ const Content = props => {
 
   useEffect(() => {
     // Update the document title using the browser API
-    console.log('jeejee', props.location.pathname);
 
     if (props.location.pathname === '/') {
       setTest(true);
