@@ -10,6 +10,9 @@
     "build": "parcel build ./frontend/index.html",
     "start": "npm run build && node backend/index.js"
   },
+  "engines": {
+    "node": "v10.16.3"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/turso/P.D-Floral.git"
