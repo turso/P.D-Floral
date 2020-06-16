@@ -22,17 +22,12 @@ passport.use(
       callbackURL: config.callbackUrl
     },
     async (accessToken, refreshToken, profile, done) => {
-      console.log('access token ', accessToken);
-      // console.log('refresh token ', refreshToken);
-      console.log('profile ', profile);
 
       const existingUser = await User.findOne({ instagramId: profile.id });
 
       if (existingUser) {
-        console.log('OLI JO KÄYTTÄJÄ');
         done(null, existingUser);
       } else {
-        console.log('LUOTIIN UUSI KÄYTTÄJÄ');
         const user = await new User({ instagramId: profile.id, accessToken }).save();
         done(null, user);
       }

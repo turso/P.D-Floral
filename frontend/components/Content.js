@@ -34,7 +34,6 @@ const Content = props => {
   }, [props.location.pathname]);
 
   const { location } = props;
-  console.log('TILA ON NYT', test);
   return (
     <StyledContent kuva={test ? imgHome : imgJoku}>
       {props.children}

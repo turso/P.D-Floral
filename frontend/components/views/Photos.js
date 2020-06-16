@@ -71,8 +71,6 @@ export default function Photos() {
     return () => (isMounted = false);
   }, []);
 
-  console.log('DATA ON TÄÄLLÄ TÄLLAISTA NYT', photos);
-
   if (photos) {
     return <Masonry className="masonry">{PhotoCards(photos)}</Masonry>;
   }
