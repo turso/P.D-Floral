@@ -13,7 +13,7 @@
   "author": "Oliver Rikkilä",
   "license": "ISC",
   "dependencies": {
-    "axios": "^0.18.1",
+    "axios": "^0.21.1",
     "babel-core": "^6.26.3",
     "babel-plugin-styled-components": "^1.10.6",
     "i18next": "^15.1.3",
