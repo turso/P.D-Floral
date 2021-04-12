@@ -76,7 +76,7 @@ export default function Photos() {
   }
   return (
     <SpinnerStyle>
-      <Spinner name="folding-cube" color="#EBCBD0" />
+              <Spinner name="folding-cube" color="#EBCBD0" />
     </SpinnerStyle>
   );
 }
