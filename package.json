@@ -30,6 +30,6 @@
     "parcel-bundler": "^1.12.4"
   },
   "dependencies": {
-    "aws-sdk": "^2.599.0"
+    "aws-sdk": "^2.814.0"
   }
 }
